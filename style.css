@@ -1,140 +1,181 @@
 body {
-  font-family: Arial, sans-serif;
-  background: url('https://i.ibb.co/xY8N4Zg/heist-bg.jpg') center/cover fixed;
   margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #1e003e, #57005a, #8c0078);
+  background-attachment: fixed;
   color: #fff;
+  overflow-x: hidden;
 }
 
-header {
+/* NAVIGATION BAR */
+.glass-nav {
+  position: fixed;
+  top: 0;
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 10px 20px;
+  align-items: center;
+  padding: 15px 25px;
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(15px);
-  background: rgba(255,255,255,0.08);
-  position: fixed;
-  top: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   z-index: 1000;
-  border-bottom: 1px solid rgba(255,255,255,0.2);
 }
 
-.logo { font-size: 18px; font-weight: bold; }
-
-.menu-btn {
-  display: none;
-  font-size: 25px;
+.logo {
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
 nav a {
-  margin: 0 15px;
-  text-decoration: none;
   color: white;
-  font-weight: bold;
-  transition: .3s;
+  text-decoration: none;
+  margin: 0 15px;
+  transition: 0.3s;
 }
 
-nav a:hover { color: red; }
+nav a:hover {
+  color: #ff007b;
+}
 
+.menu-btn {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+/* PAGE TITLE */
 .title {
   margin-top: 90px;
   text-align: center;
 }
 
+.title h1 {
+  font-size: 30px;
+  background: linear-gradient(45deg, #ff007b, #b300ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ADMIN CARDS */
 .admin-container {
   display: grid;
-  padding: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  padding: 30px;
 }
 
 .admin-card {
-  background: rgba(255,255,255,0.1);
-  border-radius: 12px;
-  padding: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 15px;
   text-align: center;
   cursor: pointer;
-  transition: .3s;
+  transition: 0.3s;
+  box-shadow: 0 0 10px rgba(255, 0, 128, 0.2);
 }
 
 .admin-card:hover {
   transform: scale(1.08);
-  background: rgba(255,0,0,0.3);
+  background: rgba(255, 0, 128, 0.25);
 }
 
 .admin-card img {
   width: 100%;
-  border-radius: 12px;
+  border-radius: 15px;
 }
 
+/* POPUP MODAL */
 .modal {
   display: none;
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  backdrop-filter: blur(10px);
-  top: 0;
+  backdrop-filter: blur(15px);
+  background: rgba(0, 0, 0, 0.4);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
 }
 
 .modal-content {
   width: 90%;
-  max-width: 380px;
-  margin: auto;
-  margin-top: 70px;
+  max-width: 400px;
   padding: 20px;
-  border-radius: 15px;
-  animation: zoom .4s ease;
+  border-radius: 20px;
+  text-align: center;
+  animation: popup 0.4s ease;
+  box-shadow: 0 0 20px rgba(255, 0, 128, 0.4);
 }
 
-@keyframes zoom {
-  from { transform: scale(.4); opacity: 0; }
+@keyframes popup {
+  from { transform: scale(0.4); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
 }
 
 .glass {
-  background: rgba(255,255,255,0.12);
-  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
-.close {
-  float: right;
-  font-size: 25px;
-  cursor: pointer;
+.modal-content img {
+  width: 100px;
+  border-radius: 50%;
+  border: 3px solid #ff00aa;
+  margin-bottom: 10px;
 }
 
 .social a {
   display: block;
   margin: 8px 0;
-  background: red;
-  padding: 7px;
-  border-radius: 6px;
-  color: #fff;
-  text-align: center;
+  padding: 8px;
+  border-radius: 10px;
   text-decoration: none;
+  background: linear-gradient(45deg, #b300ff, #ff007b);
+  color: #fff;
+  transition: 0.3s;
 }
 
+.social a:hover {
+  transform: scale(1.05);
+  background: linear-gradient(45deg, #ff007b, #b300ff);
+}
 
+.close {
+  float: right;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* RESPONSIVE MENU */
 @media (max-width: 768px) {
   nav {
     position: fixed;
     right: -100%;
-    top: 50px;
+    top: 60px;
     width: 200px;
     height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(20px);
     display: flex;
     flex-direction: column;
-    backdrop-filter: blur(20px);
-    background: rgba(255,255,255,0.2);
-    padding-top: 40px;
-    transition: .4s;
+    align-items: center;
+    transition: 0.4s;
   }
 
-  .menu-btn { display: block; }
-
-  nav.show { right: 0; }
+  nav.show {
+    right: 0;
+  }
 
   nav a {
-    margin: 20px;
-    padding: 10px;
-    border-bottom: 1px solid rgba(255,255,255,0.3);
+    margin: 15px 0;
+    font-size: 18px;
+  }
+
+  .menu-btn {
+    display: block;
   }
 }
