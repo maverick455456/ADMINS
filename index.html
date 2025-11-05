@@ -15,7 +15,6 @@
     overflow-x:hidden;
   }
 
-  /* HEADER */
   header{
     display:flex;
     align-items:center;
@@ -44,7 +43,7 @@
     box-shadow:0 0 8px #a65cff;
   }
 
-  /* HAMBURGER ICON */
+  /* Hamburger */
   .menu-icon{
     width:30px;
     height:22px;
@@ -64,20 +63,10 @@
   .menu-icon span:nth-child(1){top:0;}
   .menu-icon span:nth-child(2){top:9px;}
   .menu-icon span:nth-child(3){bottom:0;}
+  .menu-icon.active span:nth-child(1){transform:rotate(45deg);top:9px;}
+  .menu-icon.active span:nth-child(2){opacity:0;}
+  .menu-icon.active span:nth-child(3){transform:rotate(-45deg);bottom:9px;}
 
-  .menu-icon.active span:nth-child(1){
-    transform:rotate(45deg);
-    top:9px;
-  }
-  .menu-icon.active span:nth-child(2){
-    opacity:0;
-  }
-  .menu-icon.active span:nth-child(3){
-    transform:rotate(-45deg);
-    bottom:9px;
-  }
-
-  /* NAVIGATION MENU */
   .nav-menu{
     position:fixed;
     top:0;
@@ -104,7 +93,6 @@
   .nav-menu a:hover{
     background:rgba(255,255,255,0.15);
   }
-
   .menu-overlay{
     position:fixed;
     top:0;
@@ -133,11 +121,22 @@
     text-shadow:0 0 12px rgba(255,0,200,0.5);
   }
 
+  /* Admin Grid */
   .admin-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
     gap:25px;
     justify-items:center;
+  }
+
+  @media(max-width:600px){
+    .admin-grid{
+      grid-template-columns:repeat(2,1fr);
+    }
+    .admin-card:nth-child(7){
+      grid-column:1/3;
+      justify-self:center;
+    }
   }
 
   .admin-card{
@@ -243,6 +242,27 @@
     opacity:0.8;
     margin-top:40px;
   }
+
+  /* Menu Click Popup */
+  .mini-popup{
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%) scale(0.8);
+    background:rgba(255,255,255,0.1);
+    padding:18px 28px;
+    border-radius:14px;
+    backdrop-filter:blur(12px);
+    box-shadow:0 0 25px rgba(255,0,200,0.3);
+    font-weight:600;
+    opacity:0;
+    transition:all .3s ease;
+    z-index:100;
+  }
+  .mini-popup.show{
+    opacity:1;
+    transform:translate(-50%,-50%) scale(1);
+  }
 </style>
 </head>
 <body>
@@ -251,100 +271,75 @@
   <a href="https://www.freebots.store">
     <div class="dot"></div> MONEY HEIST OFC ADMINS
   </a>
-  <div class="menu-icon" id="menuIcon">
-    <span></span><span></span><span></span>
-  </div>
+  <div class="menu-icon" id="menuIcon"><span></span><span></span><span></span></div>
 </header>
 
 <div class="menu-overlay" id="menuOverlay"></div>
 
 <nav class="nav-menu" id="navMenu">
-  <a href="#">🏠 Home</a>
-  <a href="#">💎 Admins</a>
-  <a href="https://www.freebots.store" target="_blank">🌐 Main Site</a>
-  <a href="#">📞 Contact</a>
+  <a href="https://www.freebots.store/r/NIPUNO6D43" target="_blank">🔐 Loging</a>
+  <a href="https://www.freebots.store" target="_blank">🏠 Home</a>
+  <a href="https://www.freebots.store/services" target="_blank">⚙️ Service</a>
+  <a href="https://www.freebots.store/faq" target="_blank">❓ FAQ</a>
+  <a href="https://www.freebots.store/team" target="_blank">👥 Team</a>
+  <a href="https://www.freebots.store/about" target="_blank">📖 About</a>
+  <a href="https://www.freebots.store/contact" target="_blank">📞 Contact</a>
+  <a href="https://www.freebots.store/privacy" target="_blank">🔒 Privacy</a>
+  <a href="https://www.freebots.store/terms" target="_blank">📜 Terms</a>
 </nav>
+
+<div class="mini-popup" id="miniPopup">Opening...</div>
 
 <main>
   <h1>💎 OFFICIAL ADMIN PANEL 💎</h1>
-
   <div class="admin-grid">
-    <div class="admin-card" data-admin="nipun">
-      <img src="https://i.ibb.co/9n3VxK9/sample1.jpg" alt="MR NIPUN OFC">
-      <h3>MR NIPUN OFC</h3>
-    </div>
-    <div class="admin-card" data-admin="dila">
-      <img src="https://i.ibb.co/3FvJY8H/sample2.jpg" alt="MR DILA OFC">
-      <h3>MR DILA OFC</h3>
-    </div>
-    <div class="admin-card" data-admin="qusay">
-      <img src="https://i.ibb.co/VvYhbZp/sample3.jpg" alt="MR QUSAY OFC">
-      <h3>MR QUSAY OFC</h3>
-    </div>
-    <div class="admin-card" data-admin="sachiya">
-      <img src="https://i.ibb.co/6JcZkJk/sample4.jpg" alt="MR SACHIYA">
-      <h3>MR SACHIYA</h3>
-    </div>
-    <div class="admin-card" data-admin="akeel">
-      <img src="https://i.ibb.co/9YvZfXK/sample5.jpg" alt="MR AKEEL OFC">
-      <h3>MR AKEEL OFC</h3>
-    </div>
-    <div class="admin-card" data-admin="heshan">
-      <img src="https://i.ibb.co/4PFGhFH/sample6.jpg" alt="MR HESHAN OFC">
-      <h3>MR HESHAN OFC</h3>
-    </div>
-    <div class="admin-card" data-admin="rukshan">
-      <img src="https://i.ibb.co/XLtT7S4/sample7.jpg" alt="MR RUKSHAN OFC">
-      <h3>MR RUKSHAN OFC</h3>
-    </div>
+    <div class="admin-card" data-admin="nipun"><img src="https://i.ibb.co/9n3VxK9/sample1.jpg"><h3>MR NIPUN OFC</h3></div>
+    <div class="admin-card" data-admin="dila"><img src="https://i.ibb.co/3FvJY8H/sample2.jpg"><h3>MR DILA OFC</h3></div>
+    <div class="admin-card" data-admin="qusay"><img src="https://i.ibb.co/VvYhbZp/sample3.jpg"><h3>MR QUSAY OFC</h3></div>
+    <div class="admin-card" data-admin="sachiya"><img src="https://i.ibb.co/6JcZkJk/sample4.jpg"><h3>MR SACHIYA</h3></div>
+    <div class="admin-card" data-admin="akeel"><img src="https://i.ibb.co/9YvZfXK/sample5.jpg"><h3>MR AKEEL OFC</h3></div>
+    <div class="admin-card" data-admin="heshan"><img src="https://i.ibb.co/4PFGhFH/sample6.jpg"><h3>MR HESHAN OFC</h3></div>
+    <div class="admin-card" data-admin="rukshan"><img src="https://i.ibb.co/XLtT7S4/sample7.jpg"><h3>MR RUKSHAN OFC</h3></div>
   </div>
 </main>
 
-<!-- Popup -->
-<div class="popup" id="popup">
-  <div class="popup-content" id="popupContent"></div>
-</div>
-
-<footer>
-  © 2025 MONEY HEIST OFC — Admin Network
-</footer>
+<div class="popup" id="popup"><div class="popup-content" id="popupContent"></div></div>
+<footer>© 2025 MONEY HEIST OFC — Admin Network</footer>
 
 <script>
-const popup = document.getElementById('popup');
-const popupContent = document.getElementById('popupContent');
-const menuIcon = document.getElementById('menuIcon');
-const navMenu = document.getElementById('navMenu');
-const menuOverlay = document.getElementById('menuOverlay');
+const popup=document.getElementById('popup');
+const popupContent=document.getElementById('popupContent');
+const menuIcon=document.getElementById('menuIcon');
+const navMenu=document.getElementById('navMenu');
+const menuOverlay=document.getElementById('menuOverlay');
+const miniPopup=document.getElementById('miniPopup');
 
-menuIcon.onclick = ()=>{
+menuIcon.onclick=()=>{
   menuIcon.classList.toggle('active');
   navMenu.classList.toggle('active');
   menuOverlay.classList.toggle('active');
-}
-menuOverlay.onclick = ()=>{
+};
+menuOverlay.onclick=()=>{
   menuIcon.classList.remove('active');
   navMenu.classList.remove('active');
   menuOverlay.classList.remove('active');
-}
+};
 
-const adminData = {
-  nipun:{
-    img:"https://i.ibb.co/9n3VxK9/sample1.jpg",
-    name:"MR NIPUN OFC",
-    info:`
-      <p>CONTACT : <a href="https://wa.me/+94757255903" target="_blank">+94 757255903</a></p>
-      <p>AGE : 18</p>
-      <p>FROM : Sri Lanka</p><br>
-      <h3>🌐 SOCIAL MEDIA LINKS</h3>
-      <a href="https://whatsapp.com/channel/0029Vb9bLMqGJP8GmAHxUd02/3683" target="_blank">Whatsapp Channel</a>
-      <a href="https://www.facebook.com/share/1KKrZV2NM8/" target="_blank">Facebook Account</a>
-      <a href="https://www.facebook.com/share/17cgrxBQix/" target="_blank">Facebook Page</a>
-      <a href="https://vm.tiktok.com/ZSHc9tLctfuKo-3zM0Z/" target="_blank">TikTok</a>
-      <a href="https://youtube.com/@mrprofesormht?si=aT8XOonaZEj1YBdo" target="_blank">YouTube Channel</a>
-      <a href="https://www.instagram.com/mr_nipun_ofc/?utm_source=ig_web_button_share_sheet" target="_blank">Instagram</a>
-      <a href="https://t.me/Profesor9999" target="_blank">Telegram</a>
-    `
-  },
+// menu popup effect
+document.querySelectorAll('.nav-menu a').forEach(link=>{
+  link.addEventListener('click',e=>{
+    e.preventDefault();
+    const url=link.getAttribute('href');
+    miniPopup.classList.add('show');
+    setTimeout(()=>{
+      miniPopup.classList.remove('show');
+      window.open(url,'_blank');
+    },800);
+  });
+});
+
+const adminData={
+  nipun:{img:"https://i.ibb.co/9n3VxK9/sample1.jpg",name:"MR NIPUN OFC",info:`<p>CONTACT : <a href="https://wa.me/+94757255903" target="_blank">+94 757255903</a></p><p>AGE : 18</p><p>FROM : Sri Lanka</p><br><h3>🌐 SOCIAL MEDIA LINKS</h3><a href="https://whatsapp.com/channel/0029Vb9bLMqGJP8GmAHxUd02/3683" target="_blank">Whatsapp Channel</a><a href="https://www.facebook.com/share/1KKrZV2NM8/" target="_blank">Facebook Account</a><a href="https://www.facebook.com/share/17cgrxBQix/" target="_blank">Facebook Page</a><a href="https://vm.tiktok.com/ZSHc9tLctfuKo-3zM0Z/" target="_blank">TikTok</a><a href="https://youtube.com/@mrprofesormht?si=aT8XOonaZEj1YBdo" target="_blank">YouTube Channel</a><a href="https://www.instagram.com/mr_nipun_ofc/?utm_source=ig_web_button_share_sheet" target="_blank">Instagram</a><a href="https://t.me/Profesor9999" target="_blank">Telegram</a>`},
   dila:{img:"https://i.ibb.co/3FvJY8H/sample2.jpg",name:"MR DILA OFC",info:`<p>Coming Soon...</p>`},
   qusay:{img:"https://i.ibb.co/VvYhbZp/sample3.jpg",name:"MR QUSAY OFC",info:`<p>Coming Soon...</p>`},
   sachiya:{img:"https://i.ibb.co/6JcZkJk/sample4.jpg",name:"MR SACHIYA",info:`<p>Coming Soon...</p>`},
@@ -355,9 +350,9 @@ const adminData = {
 
 document.querySelectorAll('.admin-card').forEach(card=>{
   card.addEventListener('click',()=>{
-    const id = card.getAttribute('data-admin');
-    const data = adminData[id];
-    popupContent.innerHTML = `
+    const id=card.getAttribute('data-admin');
+    const data=adminData[id];
+    popupContent.innerHTML=`
       <img src="${data.img}">
       <h2>${data.name}</h2>
       ${data.info}
@@ -367,13 +362,8 @@ document.querySelectorAll('.admin-card').forEach(card=>{
   });
 });
 
-function closePopup(){
-  popup.classList.remove('active');
-}
-popup.addEventListener('click',e=>{
-  if(e.target===popup) closePopup();
-});
+function closePopup(){popup.classList.remove('active');}
+popup.addEventListener('click',e=>{if(e.target===popup)closePopup();});
 </script>
-
 </body>
 </html>
