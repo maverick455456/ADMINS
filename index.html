@@ -1,72 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MONEY HEIST OFC ADMINS</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MONEY HEIST OFC ADMINS</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
-  <div class="logo">MONEY HEIST OFC</div>
-  <div class="menu-btn" onclick="toggleMenu()">☰</div>
-  <nav id="menu">
+  <header class="glass-nav">
+    <div class="logo">MONEY HEIST OFC</div>
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+    <nav id="menu">
       <a href="#">Home</a>
       <a href="#">Admins</a>
       <a href="#">About</a>
       <a href="#">Contact</a>
-  </nav>
-</header>
+    </nav>
+  </header>
 
-<section class="title">
-  <h2>ADMINS TEAM</h2>
-</section>
+  <section class="title">
+    <h1>ADMINS TEAM</h1>
+  </section>
 
-<div class="admin-container">
+  <div class="admin-container">
 
-  <!-- 1. MR NIPUN -->
-  <div class="admin-card" onclick="openProfile('nipun')">
+    <!-- MR NIPUN OFC -->
+    <div class="admin-card" onclick="openProfile('nipun')">
       <img src="https://i.ibb.co/Bc7JtRc/profile.png">
       <h3>MR NIPUN OFC</h3>
+    </div>
+
+    <div class="admin-card"><img src="https://i.ibb.co/Bc7JtRc/profile.png"><h3>MR DILA OFC</h3></div>
+    <div class="admin-card"><img src="https://i.ibb.co/Bc7JtRc/profile.png"><h3>MR QUSAY OFC</h3></div>
+    <div class="admin-card"><img src="https://i.ibb.co/Bc7JtRc/profile.png"><h3>MR SACHIYA</h3></div>
+    <div class="admin-card"><img src="https://i.ibb.co/Bc7JtRc/profile.png"><h3>MR AKEEL OFC</h3></div>
+    <div class="admin-card"><img src="https://i.ibb.co/Bc7JtRc/profile.png"><h3>MR HESHAN OFC</h3></div>
+    <div class="admin-card"><img src="https://i.ibb.co/Bc7JtRc/profile.png"><h3>MR RUKSHAN OFC</h3></div>
   </div>
 
-  <!-- 2. MR DILA -->
-  <div class="admin-card" onclick="openProfile('dila')">
-      <img src="https://i.ibb.co/Bc7JtRc/profile.png">
-      <h3>MR DILA OFC</h3>
-  </div>
+  <!-- Popup Modal -->
+  <div id="profile-modal" class="modal" onclick="closeProfile(event)">
+    <div class="modal-content glass" onclick="event.stopPropagation()">
+      <span class="close" onclick="closeProfile()">✖</span>
+      <img id="p-img" src="">
+      <h2 id="p-name"></h2>
+      <p id="p-age"></p>
+      <p id="p-from"></p>
 
-  <div class="admin-card"><img src="https://i.ibb.co/Bc7JtRc/profile.png"><h3>MR QUSAY OFC</h3></div>
-  <div class="admin-card"><img src="https://i.ibb.co/Bc7JtRc/profile.png"><h3>MR SACHIYA</h3></div>
-  <div class="admin-card"><img src="https://i.ibb.co/Bc7JtRc/profile.png"><h3>MR AKEEL OFC</h3></div>
-  <div class="admin-card"><img src="https://i.ibb.co/Bc7JtRc/profile.png"><h3>MR HESHAN OFC</h3></div>
-  <div class="admin-card"><img src="https://i.ibb.co/Bc7JtRc/profile.png"><h3>MR RUKSHAN OFC</h3></div>
-
-</div>
-
-<!-- Popup Profile Modal -->
-<div id="profile-modal" class="modal">
-  <div class="modal-content glass">
-    <span class="close" onclick="closeProfile()">✖</span>
-
-    <img id="p-img" src="">
-    <h2 id="p-name"></h2>
-    <p id="p-age"></p>
-    <p id="p-from"></p>
-
-    <div class="social">
-      <a id="whatsapp" target="_blank">Whatsapp</a>
-      <a id="fb" target="_blank">Facebook</a>
-      <a id="page" target="_blank">FB Page</a>
-      <a id="tiktok" target="_blank">TikTok</a>
-      <a id="youtube" target="_blank">YouTube</a>
-      <a id="insta" target="_blank">Instagram</a>
-      <a id="tg" target="_blank">Telegram</a>
+      <div class="social">
+        <a id="whatsapp" target="_blank">Whatsapp</a>
+        <a id="fb" target="_blank">Facebook</a>
+        <a id="page" target="_blank">FB Page</a>
+        <a id="tiktok" target="_blank">TikTok</a>
+        <a id="youtube" target="_blank">YouTube</a>
+        <a id="insta" target="_blank">Instagram</a>
+        <a id="tg" target="_blank">Telegram</a>
+      </div>
     </div>
   </div>
-</div>
 
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
