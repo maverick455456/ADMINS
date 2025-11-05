@@ -235,56 +235,190 @@ footer{text-align:center;font-size:13px;opacity:0.8;margin-top:40px;}
 <footer>© 2025 MONEY HEIST OFC — Admin Network</footer>
 
 <script>
-const menuIcon=document.getElementById('menuIcon');
-const navMenu=document.getElementById('navMenu');
-const menuOverlay=document.getElementById('menuOverlay');
-const miniPopup=document.getElementById('miniPopup');
-const popup=document.getElementById('popup');
-const popupContent=document.getElementById('popupContent');
+  // Elements
+  const menuBtn = document.getElementById('menuBtn');
+  const navPanel = document.getElementById('navPanel');
+  const overlay = document.getElementById('overlay');
+  const modal = document.getElementById('modal');
+  const modalClose = document.getElementById('modalClose');
+  const modalClose2 = document.getElementById('modalClose2');
+  const mImg = document.getElementById('m-img');
+  const mName = document.getElementById('m-name');
+  const mInfo = document.getElementById('m-info');
 
-menuIcon.onclick=()=>{menuIcon.classList.toggle('active');navMenu.classList.toggle('active');menuOverlay.classList.toggle('active');};
-menuOverlay.onclick=()=>{menuIcon.classList.remove('active');navMenu.classList.remove('active');menuOverlay.classList.remove('active');};
+  // Admin data
+  const adminData = {
+    nipun:{
+      img:"https://i.ibb.co/9n3VxK9/sample1.jpg",
+      name:"MR NIPUN OFC",
+      info:`<p>CONTACT : <a href="https://wa.me/+94757255903" target="_blank" rel="noopener">+94 757255903</a></p>
+            <p>AGE : 18</p><p>FROM : Sri Lanka</p>
+            <br><h3>🌐 SOCIAL MEDIA LINKS</h3>
+            <a href="https://whatsapp.com/channel/0029Vb9bLMqGJP8GmAHxUd02/3683" target="_blank" rel="noopener">Whatsapp Channel</a>
+            <a href="https://www.facebook.com/share/1KKrZV2NM8/" target="_blank" rel="noopener">Facebook Account</a>
+            <a href="https://www.facebook.com/share/17cgrxBQix/" target="_blank" rel="noopener">Facebook Page</a>
+            <a href="https://vm.tiktok.com/ZSHc9tLctfuKo-3zM0Z/" target="_blank" rel="noopener">TikTok</a>
+            <a href="https://youtube.com/@mrprofesormht?si=aT8XOonaZEj1YBdo" target="_blank" rel="noopener">YouTube Channel</a>
+            <a href="https://www.instagram.com/mr_nipun_ofc/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://t.me/Profesor9999" target="_blank" rel="noopener">Telegram</a>`
+    },
+    dila:{img:"https://i.ibb.co/3FvJY8H/sample2.jpg",name:"MR DILA OFC",info:`<p>Coming Soon...</p>`},
+    qusay:{img:"https://i.ibb.co/VvYhbZp/sample3.jpg",name:"MR QUSAY OFC",info:`<p>Coming Soon...</p>`},
+    sachiya:{img:"https://i.ibb.co/6JcZkJk/sample4.jpg",name:"MR SACHIYA",info:`<p>Coming Soon...</p>`},
+    akeel:{img:"https://i.ibb.co/9YvZfXK/sample5.jpg",name:"MR AKEEL OFC",info:`<p>Coming Soon...</p>`},
+    heshan:{img:"https://i.ibb.co/4PFGhFH/sample6.jpg",name:"MR HESHAN OFC",info:`<p>Coming Soon...</p>`},
+    rukshan:{img:"https://i.ibb.co/XLtT7S4/sample7.jpg",name:"MR RUKSHAN OFC",info:`<p>Coming Soon...</p>`}
+  };
 
-// Menu links animation open
-document.querySelectorAll('.nav-menu a').forEach(link=>{
-  link.addEventListener('click',e=>{
-    e.preventDefault();
-    const url=link.getAttribute('href');
-    miniPopup.classList.add('show');
-    setTimeout(()=>{miniPopup.classList.remove('show');window.location.href=url;},700);
+  // Toggle nav
+  menuBtn.addEventListener('click', ()=>{
+    menuBtn.classList.toggle('open');
+    navPanel.classList.toggle('open');
+    overlay.classList.toggle('show');
   });
-});
-
-// Admin popup
-document.querySelectorAll('.admin-card').forEach(card=>{
-  card.addEventListener('click',()=>{
-    const name=card.querySelector('h3').innerText;
-    const img=card.querySelector('img').src;
-    let info="";
-    if(name.includes("NIPUN")){
-      info=`<p>CONTACT : <a href="https://wa.me/+94757255903" target="_blank">+94 757255903</a></p>
-      <p>AGE : 18</p>
-      <p>FROM : Sri Lanka</p><br>
-      <h3>🌐 SOCIAL MEDIA</h3>
-      <a href="https://whatsapp.com/channel/0029Vb9bLMqGJP8GmAHxUd02/3683">Whatsapp Channel</a>
-      <a href="https://www.facebook.com/share/1KKrZV2NM8/">Facebook Account</a>
-      <a href="https://www.facebook.com/share/17cgrxBQix/">Facebook Page</a>
-      <a href="https://vm.tiktok.com/ZSHc9tLctfuKo-3zM0Z/">TikTok</a>
-      <a href="https://youtube.com/@mrprofesormht?si=aT8XOonaZEj1YBdo">YouTube Channel</a>
-      <a href="https://www.instagram.com/mr_nipun_ofc/">Instagram</a>
-      <a href="https://t.me/Profesor9999">Telegram</a>`;
-    } else info="<p>Coming Soon...</p>";
-    popupContent.innerHTML=`<div class='close-x' onclick='popup.classList.remove("active")'>✖</div><img src='${img}'><h2>${name}</h2>${info}`;
-    popup.classList.add('active');
+  overlay.addEventListener('click', ()=> {
+    menuBtn.classList.remove('open');
+    navPanel.classList.remove('open');
+    overlay.classList.remove('show');
   });
-});
-popup.addEventListener('click',e=>{if(e.target===popup)popup.classList.remove('active');});
+
+  // Nav links open same tab
+  navPanel.querySelectorAll('a[data-href]').forEach(a=>{
+    a.addEventListener('click', (e)=>{
+      e.preventDefault();
+      const url = a.getAttribute('data-href');
+      // close menu with animation
+      menuBtn.classList.remove('open');
+      navPanel.classList.remove('open');
+      overlay.classList.remove('show');
+      // small delay so slide closes smoothly
+      setTimeout(()=> { window.location.href = url; }, 220);
+    });
+  });
+
+  // Admin cards -> modal
+  document.querySelectorAll('.admin-card').forEach(card=>{
+    card.addEventListener('click', ()=>{
+      const id = card.getAttribute('data-admin');
+      const data = adminData[id];
+      if(!data) return;
+      mImg.src = data.img;
+      mName.textContent = data.name;
+      mInfo.innerHTML = data.info;
+      modal.classList.add('show');
+      // focus close button for UX
+      setTimeout(()=> modalClose.focus(), 220);
+    });
+  });
+
+  // Close modal
+  modalClose.addEventListener('click', ()=> modal.classList.remove('show'));
+  modalClose2.addEventListener('click', ()=> modal.classList.remove('show'));
+  modal.addEventListener('click', (e)=> { if(e.target === modal) modal.classList.remove('show'); });
+  document.addEventListener('keydown', (e)=> { if(e.key === 'Escape'){ modal.classList.remove('show'); menuBtn.classList.remove('open'); navPanel.classList.remove('open'); overlay.classList.remove('show'); }});
 </script>
 
 </body>
-</html>co/3FvJY8H/sample2.jpg",name:"MR DILA OFC",info:`<p>Coming Soon...</p>`},
-  qusay:{img:"https://i.ibb.co/VvYhbZp/sample3.jpg",name:"MR QUSAY OFC",info:`<p>Coming Soon...</p>`},
-  sachiya:{img:"https://i.ibb.co/6JcZkJk/sample4.jpg",name:"MR SACHIYA",info:`<p>Coming Soon...</p>`},
+</html>">>
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="m-name">
+      <button class="modal-close" id="modalClose" aria-label="Close">✖</button>
+      <img id="m-img" src="" alt="">
+      <h2 id="m-name"></h2>
+      <div id="m-info"></div>
+      <div class="btn-row">
+        <button class="btn secondary" id="modalClose2">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>© 2025 MONEY HEIST OFC — Admin Network</footer>
+
+<script>
+  // Elements
+  const menuBtn = document.getElementById('menuBtn');
+  const navPanel = document.getElementById('navPanel');
+  const overlay = document.getElementById('overlay');
+  const modal = document.getElementById('modal');
+  const modalClose = document.getElementById('modalClose');
+  const modalClose2 = document.getElementById('modalClose2');
+  const mImg = document.getElementById('m-img');
+  const mName = document.getElementById('m-name');
+  const mInfo = document.getElementById('m-info');
+
+  // Admin data
+  const adminData = {
+    nipun:{
+      img:"https://i.ibb.co/9n3VxK9/sample1.jpg",
+      name:"MR NIPUN OFC",
+      info:`<p>CONTACT : <a href="https://wa.me/+94757255903" target="_blank" rel="noopener">+94 757255903</a></p>
+            <p>AGE : 18</p><p>FROM : Sri Lanka</p>
+            <br><h3>🌐 SOCIAL MEDIA LINKS</h3>
+            <a href="https://whatsapp.com/channel/0029Vb9bLMqGJP8GmAHxUd02/3683" target="_blank" rel="noopener">Whatsapp Channel</a>
+            <a href="https://www.facebook.com/share/1KKrZV2NM8/" target="_blank" rel="noopener">Facebook Account</a>
+            <a href="https://www.facebook.com/share/17cgrxBQix/" target="_blank" rel="noopener">Facebook Page</a>
+            <a href="https://vm.tiktok.com/ZSHc9tLctfuKo-3zM0Z/" target="_blank" rel="noopener">TikTok</a>
+            <a href="https://youtube.com/@mrprofesormht?si=aT8XOonaZEj1YBdo" target="_blank" rel="noopener">YouTube Channel</a>
+            <a href="https://www.instagram.com/mr_nipun_ofc/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://t.me/Profesor9999" target="_blank" rel="noopener">Telegram</a>`
+    },
+    dila:{img:"https://i.ibb.co/3FvJY8H/sample2.jpg",name:"MR DILA OFC",info:`<p>Coming Soon...</p>`},
+    qusay:{img:"https://i.ibb.co/VvYhbZp/sample3.jpg",name:"MR QUSAY OFC",info:`<p>Coming Soon...</p>`},
+    sachiya:{img:"https://i.ibb.co/6JcZkJk/sample4.jpg",name:"MR SACHIYA",info:`<p>Coming Soon...</p>`},
+    akeel:{img:"https://i.ibb.co/9YvZfXK/sample5.jpg",name:"MR AKEEL OFC",info:`<p>Coming Soon...</p>`},
+    heshan:{img:"https://i.ibb.co/4PFGhFH/sample6.jpg",name:"MR HESHAN OFC",info:`<p>Coming Soon...</p>`},
+    rukshan:{img:"https://i.ibb.co/XLtT7S4/sample7.jpg",name:"MR RUKSHAN OFC",info:`<p>Coming Soon...</p>`}
+  };
+
+  // Toggle nav
+  menuBtn.addEventListener('click', ()=>{
+    menuBtn.classList.toggle('open');
+    navPanel.classList.toggle('open');
+    overlay.classList.toggle('show');
+  });
+  overlay.addEventListener('click', ()=> {
+    menuBtn.classList.remove('open');
+    navPanel.classList.remove('open');
+    overlay.classList.remove('show');
+  });
+
+  // Nav links open same tab
+  navPanel.querySelectorAll('a[data-href]').forEach(a=>{
+    a.addEventListener('click', (e)=>{
+      e.preventDefault();
+      const url = a.getAttribute('data-href');
+      // close menu with animation
+      menuBtn.classList.remove('open');
+      navPanel.classList.remove('open');
+      overlay.classList.remove('show');
+      // small delay so slide closes smoothly
+      setTimeout(()=> { window.location.href = url; }, 220);
+    });
+  });
+
+  // Admin cards -> modal
+  document.querySelectorAll('.admin-card').forEach(card=>{
+    card.addEventListener('click', ()=>{
+      const id = card.getAttribute('data-admin');
+      const data = adminData[id];
+      if(!data) return;
+      mImg.src = data.img;
+      mName.textContent = data.name;
+      mInfo.innerHTML = data.info;
+      modal.classList.add('show');
+      // focus close button for UX
+      setTimeout(()=> modalClose.focus(), 220);
+    });
+  });
+
+  // Close modal
+  modalClose.addEventListener('click', ()=> modal.classList.remove('show'));
+  modalClose2.addEventListener('click', ()=> modal.classList.remove('show'));
+  modal.addEventListener('click', (e)=> { if(e.target === modal) modal.classList.remove('show'); });
+  document.addEventListener('keydown', (e)=> { if(e.key === 'Escape'){ modal.classList.remove('show'); menuBtn.classList.remove('open'); navPanel.classList.remove('open'); overlay.classList.remove('show'); }});
+</script>
+
+</body>
+</html>">ibb.co/6JcZkJk/sample4.jpg",name:"MR SACHIYA",info:`<p>Coming Soon...</p>`},
   akeel:{img:"https://i.ibb.co/9YvZfXK/sample5.jpg",name:"MR AKEEL OFC",info:`<p>Coming Soon...</p>`},
   heshan:{img:"https://i.ibb.co/4PFGhFH/sample6.jpg",name:"MR HESHAN OFC",info:`<p>Coming Soon...</p>`},
   rukshan:{img:"https://i.ibb.co/XLtT7S4/sample7.jpg",name:"MR RUKSHAN OFC",info:`<p>Coming Soon...</p>`}
