@@ -1,106 +1,368 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MONEY HEIST OFC ADMIN</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>MONEY HEIST OFC ADMINS🎭</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
-body {
-  height: 100vh;
-  background: radial-gradient(circle at center, rgba(255,0,0,0.25), rgba(0,0,0,0.95));
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Card */
-.card {
-  position: relative;
-  width: 220px;
-  height: 270px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 20px;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 0 25px rgba(255,0,0,0.2);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Image wrapper */
-.img-wrap {
-  position: relative;
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-  overflow: hidden;
-}
-
-/* DP image */
-.img-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-}
-
-/* small animated red ring (thin) around the img */
-.img-wrap .ring {
-  position: absolute;
-  inset: -5px;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 4;
-  background: conic-gradient(
-    from 0deg,
-    rgba(255, 0, 0, 0.9) 0%,
-    rgba(255, 0, 0, 0.15) 25%,
-    rgba(255, 0, 0, 0.9) 50%,
-    rgba(255, 0, 0, 0.15) 75%,
-    rgba(255, 0, 0, 0.9) 100%
-  );
-  filter: blur(3px);
-  opacity: 0.65;
-  animation: spinLight 4s linear infinite;
-  mix-blend-mode: screen;
-}
-
-@keyframes spinLight {
-  from {
-    transform: rotate(0deg);
+  :root{
+    --bg-dark: #050007;
+    --bg-mid: #120019;
+    --glass: rgba(255,255,255,0.04);
+    --accent-purple: #8b44ff;
+    --accent-pink: #ff4ac7;
+    --neon-red: #ff2f6d;
+    --muted: rgba(255,255,255,0.85);
   }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
-/* Text under image */
-h2 {
-  margin-top: 15px;
-  font-size: 1.2rem;
-  color: #fff;
-  text-shadow: 0 0 5px rgba(255,0,0,0.7);
-}
+  /* Base */
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+    background:
+      radial-gradient(800px 400px at 10% 10%, rgba(139,68,255,0.06), transparent 20%),
+      linear-gradient(180deg, var(--bg-mid), var(--bg-dark));
+    color:#fff;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    min-height:100vh;
+  }
+
+  /* Header */
+  header{
+    position:fixed;top:0;left:0;right:0;
+    height:64px;display:flex;align-items:center;justify-content:space-between;
+    padding:10px 18px;background:var(--glass);backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(139,68,255,0.06);z-index:1200;
+  }
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--muted);font-weight:700}
+  .brand .dot{
+    width:12px;height:12px;border-radius:50%;
+    background:linear-gradient(90deg,var(--accent-pink),var(--accent-purple));
+    box-shadow:0 0 14px rgba(139,68,255,0.16);
+  }
+
+  /* Menu button */
+  .menu-btn{width:40px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative}
+  .menu-btn span{position:absolute;left:8px;right:8px;height:3px;background:#fff;border-radius:3px;transition:all .28s}
+  .menu-btn span:nth-child(1){top:8px}
+  .menu-btn span:nth-child(2){top:15px}
+  .menu-btn span:nth-child(3){top:22px}
+  .menu-btn.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .menu-btn.open span:nth-child(2){opacity:0}
+  .menu-btn.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+  /* Overlay & Nav panel */
+  .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);opacity:0;visibility:hidden;transition:opacity .28s;z-index:1100}
+  .overlay.show{opacity:1;visibility:visible}
+
+  .nav-panel{
+    position:fixed;top:0;right:0;height:100vh;width:300px;
+    transform:translateX(108%);background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border-left:1px solid rgba(139,68,255,0.06);backdrop-filter:blur(14px);
+    box-shadow:-20px 0 60px rgba(0,0,0,0.6);padding:84px 18px 24px;transition:transform .36s cubic-bezier(.2,.9,.2,1);
+    z-index:1150;
+  }
+  .nav-panel.open{transform:translateX(0)}
+  .nav-panel a{display:block;padding:12px 14px;margin:8px 0;border-radius:12px;color:var(--muted);text-decoration:none;font-weight:600;transition:background .18s,transform .18s}
+  .nav-panel a:hover{background:linear-gradient(90deg, rgba(139,68,255,0.06), rgba(255,74,199,0.04));transform:translateX(-6px)}
+
+  /* Page container */
+  main{max-width:1100px;margin:0 auto;padding:110px 18px 90px;text-align:center}
+
+  h1{font-size:28px;margin-bottom:26px;color:var(--muted);text-shadow:0 0 18px rgba(139,68,255,0.04)}
+
+  /* Admin grid layout */
+  .admin-grid{
+    display:grid;
+    gap:22px;
+    grid-template-columns:repeat(3,1fr);
+    align-items:start;
+  }
+  @media (max-width:1000px){ .admin-grid{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:600px){ .admin-grid{grid-template-columns:repeat(2,1fr)} }
+
+  /* ensure 7th is centered */
+  @media (min-width:1001px){ .admin-grid .admin-card:nth-child(7){grid-column:2} }
+  @media (max-width:1000px){ .admin-grid .admin-card:nth-child(7){grid-column:1 / span 2; justify-self:center; max-width:360px} }
+
+  /* Card */
+  .admin-card{
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border:1px solid rgba(139,68,255,0.06);
+    border-radius:14px;padding:12px;text-align:center;cursor:pointer;position:relative;
+    transition:transform .22s, box-shadow .22s;
+    box-shadow:0 8px 26px rgba(0,0,0,0.55);
+  }
+  .admin-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(139,68,255,0.08)}
+  .admin-name{margin-top:10px;font-weight:700;color:var(--muted);font-size:14px}
+
+  /* Image wrapper + subtle frame */
+  .img-wrap{
+    width:100%;height:140px;border-radius:12px;position:relative;display:flex;align-items:center;justify-content:center;overflow:visible;margin:0 auto;
+  }
+  .img-wrap img{
+    width:88%;height:86%;object-fit:cover;border-radius:10px;position:relative;z-index:5;border:3px solid rgba(0,0,0,0.2);
+  }
+
+  /* small animated red ring (thin) around the img */
+  .img-wrap .ring{
+    position:absolute;inset: -6px; border-radius:14px; z-index:3; pointer-events:none;
+    background: conic-gradient(from 0deg, rgba(255,47,109,0.95), rgba(255,47,109,0.0) 30%, rgba(255,47,109,0.95) 50%, rgba(255,47,109,0.0) 80%, rgba(255,47,109,0.95));
+    filter:blur(6px); opacity:0.22; animation:spinSlow 5.5s linear infinite;
+    mix-blend-mode:screen;
+  }
+  @keyframes spinSlow{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+  .admin-card:hover .img-wrap .ring{opacity:0.6;filter:blur(9px)}
+
+  /* Modal */
+  .modal{position:fixed;inset:0;background:rgba(0,0,0,0.66);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .22s;z-index:1300}
+  .modal.show{opacity:1;visibility:visible}
+  .modal-box{
+    width:92%;max-width:520px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border-radius:12px;padding:18px;border:1px solid rgba(139,68,255,0.06);backdrop-filter:blur(12px);
+    box-shadow:0 30px 60px rgba(10,0,30,0.6);animation:popIn .28s ease;text-align:center;color:var(--muted);
+    position:relative;
+  }
+  @keyframes popIn{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+
+  .modal-box img{width:120px;height:120px;border-radius:50%;object-fit:cover;border:4px solid rgba(255,255,255,0.03);box-shadow:0 12px 40px rgba(139,68,255,0.08)}
+  .modal-box h2{margin-top:12px;font-size:20px}
+  .modal-box p{margin:8px 0;color:rgba(255,255,255,0.9);font-size:14px}
+  .modal-box .social a{display:block;margin:6px 0;padding:9px;border-radius:10px;text-decoration:none;color:#fff;background:linear-gradient(90deg,var(--accent-purple),var(--accent-pink));font-weight:700}
+
+  .modal-close{
+    position:absolute;top:12px;right:12px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted);width:36px;height:36px;border-radius:8px;cursor:pointer;font-size:16px;
+  }
+  .modal-close:hover{background:rgba(139,68,255,0.06)}
+
+  footer{padding:28px 12px;text-align:center;color:rgba(255,255,255,0.6);font-size:13px;margin-top:20px}
 </style>
 </head>
 <body>
 
-<div class="card">
-  <div class="img-wrap">
-    <div class="ring"></div>
-    <img src="https://i.ibb.co/3vPnfx7/admin-dp.jpg" alt="Admin DP">
-  </div>
-  <h2>MONEY HEIST ADMIN</h2>
-</div>
+  <header>
+    <a class="brand" href="https://www.freebots.store" target="_blank" rel="noopener">
+      <span class="dot" aria-hidden="true"></span>
+      MONEY HEIST OFC ADMINS
+    </a>
 
+    <div class="menu-btn" id="menuBtn" aria-label="menu" title="menu" role="button" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+  </header>
+
+  <!-- overlay for nav -->
+  <div class="overlay" id="overlay" aria-hidden="true"></div>
+
+  <!-- sliding nav panel -->
+  <nav class="nav-panel" id="navPanel" aria-hidden="true">
+    <a href="#" data-url="https://www.freebots.store/r/NIPUNO6D43">Loging</a>
+    <a href="#" data-url="https://www.freebots.store">Home</a>
+    <a href="#" data-url="https://www.freebots.store/services">Service</a>
+    <a href="#" data-url="https://www.freebots.store/faq">FAQ</a>
+    <a href="#" data-url="https://www.freebots.store/team">Team</a>
+    <a href="#" data-url="https://www.freebots.store/about">About</a>
+    <a href="#" data-url="https://www.freebots.store/contact">Contact</a>
+    <a href="#" data-url="https://www.freebots.store/privacy">Privacy</a>
+    <a href="#" data-url="https://www.freebots.store/terms">Terms</a>
+  </nav>
+
+  <main>
+    <h1>MONEY HEIST ADMINS</h1>
+
+    <section class="admin-grid" id="adminGrid" aria-live="polite">
+      <!-- 1 -->
+      <article class="admin-card" data-id="nipun" role="button" tabindex="0" aria-pressed="false">
+        <div class="img-wrap">
+          <div class="ring" aria-hidden="true"></div>
+          <img alt="MR NIPUN OFC" src="https://raw.githubusercontent.com/maverick455456/ADMINS/main/ADMIN-DP/20251022_232200.png">
+        </div>
+        <div class="admin-name">MR NIPUN OFC</div>
+      </article>
+
+      <!-- 2 -->
+      <article class="admin-card" data-id="dila" role="button" tabindex="0">
+        <div class="img-wrap"><div class="ring" aria-hidden="true"></div>
+          <img alt="MR DILA OFC" src="https://i.ibb.co/3FvJY8H/sample2.jpg">
+        </div>
+        <div class="admin-name">MR DILA OFC</div>
+      </article>
+
+      <!-- 3 -->
+      <article class="admin-card" data-id="qusay" role="button" tabindex="0">
+        <div class="img-wrap"><div class="ring" aria-hidden="true"></div>
+          <img alt="MR QUSAY OFC" src="https://i.ibb.co/VvYhbZp/sample3.jpg">
+        </div>
+        <div class="admin-name">MR QUSAY OFC</div>
+      </article>
+
+      <!-- 4 -->
+      <article class="admin-card" data-id="sachiya" role="button" tabindex="0">
+        <div class="img-wrap"><div class="ring" aria-hidden="true"></div>
+          <img alt="MR SACHIYA" src="https://i.ibb.co/6JcZkJk/sample4.jpg">
+        </div>
+        <div class="admin-name">MR SACHIYA</div>
+      </article>
+
+      <!-- 5 -->
+      <article class="admin-card" data-id="akeel" role="button" tabindex="0">
+        <div class="img-wrap"><div class="ring" aria-hidden="true"></div>
+          <img alt="MR AKEEL OFC" src="https://i.ibb.co/9YvZfXK/sample5.jpg">
+        </div>
+        <div class="admin-name">MR AKEEL OFC</div>
+      </article>
+
+      <!-- 6 -->
+      <article class="admin-card" data-id="heshan" role="button" tabindex="0">
+        <div class="img-wrap"><div class="ring" aria-hidden="true"></div>
+          <img alt="MR HESHAN OFC" src="https://i.ibb.co/4PFGhFH/sample6.jpg">
+        </div>
+        <div class="admin-name">MR HESHAN OFC</div>
+      </article>
+
+      <!-- 7 (centered) -->
+      <article class="admin-card" data-id="rukshan" role="button" tabindex="0">
+        <div class="img-wrap"><div class="ring" aria-hidden="true"></div>
+          <img alt="MR RUKSHAN OFC" src="https://i.ibb.co/XLtT7S4/sample7.jpg">
+        </div>
+        <div class="admin-name">MR RUKSHAN OFC</div>
+      </article>
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <div class="modal" id="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-box" id="modalBox">
+      <button class="modal-close" id="modalClose" aria-label="Close">✖</button>
+      <img id="modalImg" alt="">
+      <h2 id="modalName"></h2>
+      <div id="modalInfo" class="social"></div>
+    </div>
+  </div>
+
+  <footer>© 2025 MONEY HEIST OFC — Admin Network</footer>
+
+<script>
+  // ===== Clean admin data (no stray backticks or template issues) =====
+  const ADMIN_DATA = {
+    nipun: {
+      img: "https://raw.githubusercontent.com/maverick455456/ADMINS/main/ADMIN-DP/20251022_232200.png",
+      name: "MR NIPUN OFC",
+      info: `
+        <p>CONTACT : <a href="https://wa.me/+94757255903" target="_blank" rel="noopener">+94 757255903</a></p>
+        <p>AGE : 18</p><p>FROM : Sri Lanka</p>
+        <br><h3>🌐 SOCIAL MEDIA</h3>
+        <a href="https://whatsapp.com/channel/0029Vb9bLMqGJP8GmAHxUd02/3683" target="_blank" rel="noopener">Whatsapp Channel</a>
+        <a href="https://www.facebook.com/share/1KKrZV2NM8/" target="_blank" rel="noopener">Facebook Account</a>
+        <a href="https://www.facebook.com/share/17cgrxBQix/" target="_blank" rel="noopener">Facebook Page</a>
+        <a href="https://vm.tiktok.com/ZSHc9tLctfuKo-3zM0Z/" target="_blank" rel="noopener">TikTok</a>
+        <a href="https://youtube.com/@mrprofesormht?si=aT8XOonaZEj1YBdo" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://www.instagram.com/mr_nipun_ofc/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://t.me/Profesor9999" target="_blank" rel="noopener">Telegram</a>
+      `
+    },
+    dila: { img: "https://i.ibb.co/3FvJY8H/sample2.jpg", name: "MR DILA OFC", info: "<p>Coming Soon...</p>" },
+    qusay: { img: "https://i.ibb.co/VvYhbZp/sample3.jpg", name: "MR QUSAY OFC", info: "<p>Coming Soon...</p>" },
+    sachiya: { img: "https://i.ibb.co/6JcZkJk/sample4.jpg", name: "MR SACHIYA", info: "<p>Coming Soon...</p>" },
+    akeel: { img: "https://i.ibb.co/9YvZfXK/sample5.jpg", name: "MR AKEEL OFC", info: "<p>Coming Soon...</p>" },
+    heshan: { img: "https://i.ibb.co/4PFGhFH/sample6.jpg", name: "MR HESHAN OFC", info: "<p>Coming Soon...</p>" },
+    rukshan: { img: "https://i.ibb.co/XLtT7S4/sample7.jpg", name: "MR RUKSHAN OFC", info: "<p>Coming Soon...</p>" }
+  };
+
+  // ===== UI references =====
+  const menuBtn = document.getElementById('menuBtn');
+  const navPanel = document.getElementById('navPanel');
+  const overlay = document.getElementById('overlay');
+
+  const adminCards = document.querySelectorAll('.admin-card');
+  const modal = document.getElementById('modal');
+  const modalImg = document.getElementById('modalImg');
+  const modalName = document.getElementById('modalName');
+  const modalInfo = document.getElementById('modalInfo');
+  const modalClose = document.getElementById('modalClose');
+
+  // ===== Menu open/close =====
+  function openNav(){
+    menuBtn.classList.add('open');
+    navPanel.classList.add('open');
+    overlay.classList.add('show');
+    navPanel.setAttribute('aria-hidden', 'false');
+  }
+  function closeNav(){
+    menuBtn.classList.remove('open');
+    navPanel.classList.remove('open');
+    overlay.classList.remove('show');
+    navPanel.setAttribute('aria-hidden', 'true');
+  }
+  menuBtn.addEventListener('click', ()=> {
+    if(navPanel.classList.contains('open')) closeNav(); else openNav();
+  });
+  overlay.addEventListener('click', closeNav);
+  document.addEventListener('keydown', (e)=> {
+    if(e.key === 'Escape'){ closeNav(); closeModal(); }
+  });
+
+  // nav links open in same tab with a tiny closing delay
+  navPanel.querySelectorAll('a[data-url]').forEach(a=>{
+    a.addEventListener('click', (ev)=> {
+      ev.preventDefault();
+      const target = a.getAttribute('data-url');
+      // close nav first for smooth UX
+      closeNav();
+      setTimeout(()=> { window.location.href = target; }, 240);
+    });
+  });
+
+  // ===== Admin card -> modal =====
+  function openModal(id){
+    const data = ADMIN_DATA[id];
+    if(!data) return;
+    modalImg.src = data.img;
+    modalImg.alt = data.name;
+    modalName.textContent = data.name;
+    modalInfo.innerHTML = data.info;
+    modal.classList.add('show');
+    modal.setAttribute('aria-hidden','false');
+    // focus close button for accessibility
+    setTimeout(()=> modalClose.focus(), 200);
+  }
+  function closeModal(){
+    modal.classList.remove('show');
+    modal.setAttribute('aria-hidden','true');
+  }
+
+  adminCards.forEach(card => {
+    // click
+    card.addEventListener('click', ()=> {
+      const id = card.getAttribute('data-id');
+      openModal(id);
+    });
+    // keyboard accessible (Enter/Space)
+    card.addEventListener('keydown', (e)=> {
+      if(e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const id = card.getAttribute('data-id');
+        openModal(id);
+      }
+    });
+  });
+
+  modalClose.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e)=> { if(e.target === modal) closeModal(); });
+
+  // Ensure images with GitHub raw load: if CORS or 404 occurs, fallback text handled by browser.
+  // No console logs, no stray output to DOM.
+
+  // Accessibility: trap focus inside modal while open (basic)
+  document.addEventListener('focus', function(event){
+    if(modal.classList.contains('show') && !modal.contains(event.target)){
+      event.stopPropagation();
+      modalClose.focus();
+    }
+  }, true);
+</script>
 </body>
-</html>
+          </html>
