@@ -3,274 +3,154 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MONEY HEIST OFC ADMINS 🕶️</title>
+<title>MONEY HEIST OFC ADMINS</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  *{margin:0;padding:0;box-sizing:border-box;}
-  body{
-    font-family:'Poppins',sans-serif;
-    background: radial-gradient(circle at top,#6c0078,#1a001f 80%);
-    color:#fff;
-    min-height:100vh;
-    overflow-x:hidden;
-  }
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Poppins',sans-serif;
+  background:radial-gradient(circle at top,#6c0078,#1a001f 80%);
+  color:#fff;min-height:100vh;overflow-x:hidden;
+}
 
-  header{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:16px 22px;
-    background:rgba(255,255,255,0.06);
-    backdrop-filter:blur(12px);
-    border-bottom:1px solid rgba(255,255,255,0.1);
-    font-weight:600;
-    position:relative;
-    z-index:20;
-  }
-  header a{
-    color:#fff;
-    text-decoration:none;
-    font-weight:700;
-    display:flex;
-    align-items:center;
-    gap:6px;
-  }
-  .dot{
-    width:10px;
-    height:10px;
-    border-radius:50%;
-    background:#a65cff;
-    box-shadow:0 0 8px #a65cff;
-  }
+/* Header */
+header{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:14px 22px;background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.1);
+  font-weight:600;position:relative;z-index:20;
+}
+header a{color:#fff;text-decoration:none;font-weight:700;display:flex;align-items:center;gap:6px;}
+.dot{width:10px;height:10px;border-radius:50%;background:#a65cff;box-shadow:0 0 8px #a65cff;}
 
-  /* Hamburger */
-  .menu-icon{
-    width:30px;
-    height:22px;
-    cursor:pointer;
-    position:relative;
-    z-index:25;
-  }
-  .menu-icon span{
-    position:absolute;
-    width:100%;
-    height:3px;
-    background:#fff;
-    left:0;
-    border-radius:3px;
-    transition:all .3s ease;
-  }
-  .menu-icon span:nth-child(1){top:0;}
-  .menu-icon span:nth-child(2){top:9px;}
-  .menu-icon span:nth-child(3){bottom:0;}
-  .menu-icon.active span:nth-child(1){transform:rotate(45deg);top:9px;}
-  .menu-icon.active span:nth-child(2){opacity:0;}
-  .menu-icon.active span:nth-child(3){transform:rotate(-45deg);bottom:9px;}
+/* Hamburger */
+.menu-icon{width:30px;height:22px;cursor:pointer;position:relative;z-index:25;}
+.menu-icon span{position:absolute;width:100%;height:3px;background:#fff;border-radius:3px;left:0;transition:.3s;}
+.menu-icon span:nth-child(1){top:0;}
+.menu-icon span:nth-child(2){top:9px;}
+.menu-icon span:nth-child(3){bottom:0;}
+.menu-icon.active span:nth-child(1){transform:rotate(45deg);top:9px;}
+.menu-icon.active span:nth-child(2){opacity:0;}
+.menu-icon.active span:nth-child(3){transform:rotate(-45deg);bottom:9px;}
 
-  .nav-menu{
-    position:fixed;
-    top:0;
-    right:-100%;
-    width:220px;
-    height:100%;
-    background:rgba(255,255,255,0.08);
-    backdrop-filter:blur(15px);
-    border-left:1px solid rgba(255,255,255,0.1);
-    box-shadow:0 0 25px rgba(255,0,200,0.25);
-    transition:all .4s ease;
-    padding-top:70px;
-    z-index:15;
-  }
-  .nav-menu.active{right:0;}
-  .nav-menu a{
-    display:block;
-    padding:14px 20px;
-    color:#fff;
-    text-decoration:none;
-    font-weight:500;
-    transition:.3s;
-  }
-  .nav-menu a:hover{
-    background:rgba(255,255,255,0.15);
-  }
-  .menu-overlay{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,0.4);
-    opacity:0;
-    visibility:hidden;
-    transition:.3s;
-    z-index:10;
-  }
-  .menu-overlay.active{
-    opacity:1;
-    visibility:visible;
-  }
+/* Nav Menu */
+.nav-menu{
+  position:fixed;top:0;right:-100%;width:220px;height:100%;
+  background:rgba(255,255,255,0.08);backdrop-filter:blur(15px);
+  border-left:1px solid rgba(255,255,255,0.1);box-shadow:0 0 25px rgba(255,0,200,0.25);
+  transition:.4s ease;padding-top:70px;z-index:15;
+}
+.nav-menu.active{right:0;}
+.nav-menu a{display:block;padding:14px 20px;color:#fff;text-decoration:none;transition:.3s;}
+.nav-menu a:hover{background:rgba(255,255,255,0.15);}
+.menu-overlay{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background:rgba(0,0,0,0.4);opacity:0;visibility:hidden;transition:.3s;z-index:10;
+}
+.menu-overlay.active{opacity:1;visibility:visible;}
 
-  main{
-    padding:30px 20px 60px;
-    text-align:center;
-  }
-  h1{
-    font-size:26px;
-    font-weight:700;
-    margin-bottom:30px;
-    text-shadow:0 0 12px rgba(255,0,200,0.5);
-  }
+/* Main */
+main{text-align:center;padding:30px 15px 60px;}
+h1{font-size:26px;font-weight:700;margin-bottom:30px;text-shadow:0 0 12px rgba(255,0,200,0.5);}
 
-  /* Admin Grid */
-  .admin-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-    gap:25px;
-    justify-items:center;
-  }
+/* Admin Grid */
+.admin-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:25px;
+  justify-items:center;
+}
+@media(max-width:600px){
+  .admin-grid{grid-template-columns:repeat(2,1fr);}
+  .admin-card:nth-child(7){grid-column:1/3;justify-self:center;}
+}
 
-  @media(max-width:600px){
-    .admin-grid{
-      grid-template-columns:repeat(2,1fr);
-    }
-    .admin-card:nth-child(7){
-      grid-column:1/3;
-      justify-self:center;
-    }
-  }
+/* Admin Cards */
+.admin-card{
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.1);
+  backdrop-filter:blur(10px);
+  border-radius:20px;
+  box-shadow:0 0 25px rgba(255,0,170,0.25);
+  width:150px;
+  padding:12px;
+  transition:.3s;
+  cursor:pointer;
+}
+.admin-card:hover{transform:scale(1.05);box-shadow:0 0 35px rgba(255,0,200,0.4);}
+.admin-card h3{font-size:13px;font-weight:600;}
 
-  .admin-card{
-    background:rgba(255,255,255,0.08);
-    border:1px solid rgba(255,255,255,0.1);
-    backdrop-filter:blur(10px);
-    border-radius:20px;
-    box-shadow:0 0 25px rgba(255,0,170,0.25);
-    width:180px;
-    padding:15px;
-    transition:all .3s ease;
-    cursor:pointer;
-  }
-  .admin-card:hover{
-    transform:scale(1.05);
-    box-shadow:0 0 35px rgba(255,0,200,0.4);
-  }
-  .admin-card img{
-    width:100%;
-    height:160px;
-    border-radius:15px;
-    object-fit:cover;
-    margin-bottom:10px;
-  }
-  .admin-card h3{
-    font-size:15px;
-    font-weight:600;
-  }
+/* Image with light ring animation */
+.admin-img-wrapper{
+  position:relative;
+  width:100%;
+  height:130px;
+  border-radius:15px;
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.admin-img-wrapper::before{
+  content:"";
+  position:absolute;
+  width:140%;
+  height:140%;
+  border-radius:50%;
+  background:conic-gradient(red 0deg, transparent 60deg, red 120deg, transparent 180deg, red 240deg, transparent 300deg, red 360deg);
+  animation:spin 4s linear infinite;
+  z-index:0;
+  filter:blur(4px);
+}
+@keyframes spin{from{transform:rotate(0);}to{transform:rotate(360deg);}}
+.admin-img-wrapper img{
+  position:relative;
+  z-index:2;
+  width:90%;
+  height:90%;
+  border-radius:15px;
+  object-fit:cover;
+}
 
-  /* Popup */
-  .popup{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,0.55);
-    backdrop-filter:blur(5px);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    opacity:0;
-    visibility:hidden;
-    transition:all .3s ease;
-    z-index:50;
-  }
-  .popup.active{
-    opacity:1;
-    visibility:visible;
-  }
-  .popup-content{
-    background:rgba(255,255,255,0.08);
-    border:1px solid rgba(255,255,255,0.15);
-    backdrop-filter:blur(15px);
-    border-radius:20px;
-    box-shadow:0 0 35px rgba(255,0,200,0.4);
-    padding:25px;
-    max-width:420px;
-    text-align:center;
-    animation:popupShow .4s ease;
-  }
-  @keyframes popupShow{
-    from{transform:scale(0.7);opacity:0;}
-    to{transform:scale(1);opacity:1;}
-  }
-  .popup-content img{
-    width:120px;
-    height:120px;
-    border-radius:50%;
-    object-fit:cover;
-    box-shadow:0 0 15px rgba(255,0,200,0.4);
-  }
-  .popup-content h2{
-    margin-top:10px;
-    font-size:20px;
-    font-weight:700;
-  }
-  .popup-content p{
-    margin:6px 0;
-    font-size:14px;
-  }
-  .popup-content a{
-    color:#b084ff;
-    text-decoration:none;
-    display:block;
-    margin:4px 0;
-  }
-  .close-popup{
-    margin-top:15px;
-    padding:8px 16px;
-    border:none;
-    border-radius:12px;
-    background:linear-gradient(90deg,#ff48c4,#9f51ff);
-    color:#fff;
-    font-weight:600;
-    cursor:pointer;
-    box-shadow:0 0 15px rgba(255,0,200,0.3);
-  }
+/* Popup */
+.popup{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.55);
+backdrop-filter:blur(5px);display:flex;justify-content:center;align-items:center;
+opacity:0;visibility:hidden;transition:.3s;z-index:50;}
+.popup.active{opacity:1;visibility:visible;}
+.popup-content{
+  background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);
+  backdrop-filter:blur(15px);border-radius:20px;box-shadow:0 0 35px rgba(255,0,200,0.4);
+  padding:25px;max-width:420px;text-align:center;animation:popupShow .4s ease;
+}
+@keyframes popupShow{from{transform:scale(0.7);opacity:0;}to{transform:scale(1);opacity:1;}}
+.popup-content img{
+  width:110px;height:110px;border-radius:50%;object-fit:cover;
+  box-shadow:0 0 15px rgba(255,0,200,0.4);
+}
+.popup-content h2{margin-top:10px;font-size:20px;font-weight:700;}
+.popup-content p{margin:6px 0;font-size:14px;}
+.popup-content a{color:#b084ff;text-decoration:none;display:block;margin:4px 0;}
+.close-popup{
+  margin-top:15px;padding:8px 16px;border:none;border-radius:12px;
+  background:linear-gradient(90deg,#ff48c4,#9f51ff);color:#fff;font-weight:600;
+  cursor:pointer;box-shadow:0 0 15px rgba(255,0,200,0.3);
+}
 
-  footer{
-    text-align:center;
-    font-size:13px;
-    opacity:0.8;
-    margin-top:40px;
-  }
-
-  /* Menu Click Popup */
-  .mini-popup{
-    position:fixed;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%) scale(0.8);
-    background:rgba(255,255,255,0.1);
-    padding:18px 28px;
-    border-radius:14px;
-    backdrop-filter:blur(12px);
-    box-shadow:0 0 25px rgba(255,0,200,0.3);
-    font-weight:600;
-    opacity:0;
-    transition:all .3s ease;
-    z-index:100;
-  }
-  .mini-popup.show{
-    opacity:1;
-    transform:translate(-50%,-50%) scale(1);
-  }
+/* Mini Popup */
+.mini-popup{
+  position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.8);
+  background:rgba(255,255,255,0.1);padding:18px 28px;border-radius:14px;
+  backdrop-filter:blur(12px);box-shadow:0 0 25px rgba(255,0,200,0.3);
+  font-weight:600;opacity:0;transition:.3s;z-index:100;
+}
+.mini-popup.show{opacity:1;transform:translate(-50%,-50%) scale(1);}
+footer{text-align:center;font-size:13px;opacity:0.8;margin-top:40px;}
 </style>
 </head>
 <body>
 
 <header>
-  <a href="https://www.freebots.store">
-    <div class="dot"></div> MONEY HEIST OFC ADMINS
-  </a>
+  <a href="https://www.freebots.store"><div class="dot"></div> MONEY HEIST OFC ADMINS</a>
   <div class="menu-icon" id="menuIcon"><span></span><span></span><span></span></div>
 </header>
 
@@ -293,13 +173,34 @@
 <main>
   <h1>💎 OFFICIAL ADMIN PANEL 💎</h1>
   <div class="admin-grid">
-    <div class="admin-card" data-admin="nipun"><img src="https://i.ibb.co/9n3VxK9/sample1.jpg"><h3>MR NIPUN OFC</h3></div>
-    <div class="admin-card" data-admin="dila"><img src="https://i.ibb.co/3FvJY8H/sample2.jpg"><h3>MR DILA OFC</h3></div>
-    <div class="admin-card" data-admin="qusay"><img src="https://i.ibb.co/VvYhbZp/sample3.jpg"><h3>MR QUSAY OFC</h3></div>
-    <div class="admin-card" data-admin="sachiya"><img src="https://i.ibb.co/6JcZkJk/sample4.jpg"><h3>MR SACHIYA</h3></div>
-    <div class="admin-card" data-admin="akeel"><img src="https://i.ibb.co/9YvZfXK/sample5.jpg"><h3>MR AKEEL OFC</h3></div>
-    <div class="admin-card" data-admin="heshan"><img src="https://i.ibb.co/4PFGhFH/sample6.jpg"><h3>MR HESHAN OFC</h3></div>
-    <div class="admin-card" data-admin="rukshan"><img src="https://i.ibb.co/XLtT7S4/sample7.jpg"><h3>MR RUKSHAN OFC</h3></div>
+    <div class="admin-card" data-admin="nipun">
+      <div class="admin-img-wrapper"><img src="https://i.ibb.co/9n3VxK9/sample1.jpg"></div>
+      <h3>MR NIPUN OFC</h3>
+    </div>
+    <div class="admin-card" data-admin="dila">
+      <div class="admin-img-wrapper"><img src="https://i.ibb.co/3FvJY8H/sample2.jpg"></div>
+      <h3>MR DILA OFC</h3>
+    </div>
+    <div class="admin-card" data-admin="qusay">
+      <div class="admin-img-wrapper"><img src="https://i.ibb.co/VvYhbZp/sample3.jpg"></div>
+      <h3>MR QUSAY OFC</h3>
+    </div>
+    <div class="admin-card" data-admin="sachiya">
+      <div class="admin-img-wrapper"><img src="https://i.ibb.co/6JcZkJk/sample4.jpg"></div>
+      <h3>MR SACHIYA</h3>
+    </div>
+    <div class="admin-card" data-admin="akeel">
+      <div class="admin-img-wrapper"><img src="https://i.ibb.co/9YvZfXK/sample5.jpg"></div>
+      <h3>MR AKEEL OFC</h3>
+    </div>
+    <div class="admin-card" data-admin="heshan">
+      <div class="admin-img-wrapper"><img src="https://i.ibb.co/4PFGhFH/sample6.jpg"></div>
+      <h3>MR HESHAN OFC</h3>
+    </div>
+    <div class="admin-card" data-admin="rukshan">
+      <div class="admin-img-wrapper"><img src="https://i.ibb.co/XLtT7S4/sample7.jpg"></div>
+      <h3>MR RUKSHAN OFC</h3>
+    </div>
   </div>
 </main>
 
@@ -314,27 +215,16 @@ const navMenu=document.getElementById('navMenu');
 const menuOverlay=document.getElementById('menuOverlay');
 const miniPopup=document.getElementById('miniPopup');
 
-menuIcon.onclick=()=>{
-  menuIcon.classList.toggle('active');
-  navMenu.classList.toggle('active');
-  menuOverlay.classList.toggle('active');
-};
-menuOverlay.onclick=()=>{
-  menuIcon.classList.remove('active');
-  navMenu.classList.remove('active');
-  menuOverlay.classList.remove('active');
-};
+menuIcon.onclick=()=>{menuIcon.classList.toggle('active');navMenu.classList.toggle('active');menuOverlay.classList.toggle('active');};
+menuOverlay.onclick=()=>{menuIcon.classList.remove('active');navMenu.classList.remove('active');menuOverlay.classList.remove('active');};
 
-// menu popup effect
+// menu link popup
 document.querySelectorAll('.nav-menu a').forEach(link=>{
   link.addEventListener('click',e=>{
     e.preventDefault();
     const url=link.getAttribute('href');
     miniPopup.classList.add('show');
-    setTimeout(()=>{
-      miniPopup.classList.remove('show');
-      window.open(url,'_blank');
-    },800);
+    setTimeout(()=>{miniPopup.classList.remove('show');window.open(url,'_blank');},800);
   });
 });
 
@@ -344,6 +234,24 @@ const adminData={
   qusay:{img:"https://i.ibb.co/VvYhbZp/sample3.jpg",name:"MR QUSAY OFC",info:`<p>Coming Soon...</p>`},
   sachiya:{img:"https://i.ibb.co/6JcZkJk/sample4.jpg",name:"MR SACHIYA",info:`<p>Coming Soon...</p>`},
   akeel:{img:"https://i.ibb.co/9YvZfXK/sample5.jpg",name:"MR AKEEL OFC",info:`<p>Coming Soon...</p>`},
+  heshan:{img:"https://i.ibb.co/4PFGhFH/sample6.jpg",name:"MR HESHAN OFC",info:`<p>Coming Soon...</p>`},
+  rukshan:{img:"https://i.ibb.co/XLtT7S4/sample7.jpg",name:"MR RUKSHAN OFC",info:`<p>Coming Soon...</p>`}
+};
+
+document.querySelectorAll('.admin-card').forEach(card=>{
+  card.addEventListener('click',()=>{
+    const id=card.getAttribute('data-admin');
+    const data=adminData[id];
+    popupContent.innerHTML=`<img src="${data.img}"><h2>${data.name}</h2>${data.info}<button class="close-popup" onclick="closePopup()">Close</button>`;
+    popup.classList.add('active');
+  });
+});
+
+function closePopup(){popup.classList.remove('active');}
+popup.addEventListener('click',e=>{if(e.target===popup)closePopup();});
+</script>
+</body>
+</html>co/9YvZfXK/sample5.jpg",name:"MR AKEEL OFC",info:`<p>Coming Soon...</p>`},
   heshan:{img:"https://i.ibb.co/4PFGhFH/sample6.jpg",name:"MR HESHAN OFC",info:`<p>Coming Soon...</p>`},
   rukshan:{img:"https://i.ibb.co/XLtT7S4/sample7.jpg",name:"MR RUKSHAN OFC",info:`<p>Coming Soon...</p>`}
 };
