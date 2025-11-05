@@ -7,39 +7,36 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg1:#0b0010;
-    --bg2:#1a0026;
+    --bg1:#070006;
+    --bg2:#19002a;
     --glass: rgba(255,255,255,0.06);
-    --accent1:#ff4ac7; /* pink */
-    --accent2:#9f51ff; /* purple */
-    --neon:#ff2f6d; /* neon red/pink */
-    --text:#ffffff;
+    --pink:#ff4ac7;
+    --purple:#9f51ff;
+    --neon:#ff2f6d;
+    --muted: rgba(255,255,255,0.8);
   }
-
   *{box-sizing:border-box;margin:0;padding:0}
   body{
     font-family:"Poppins",sans-serif;
-    background: radial-gradient(1200px 600px at 10% 10%, #2b003f 0%, var(--bg2) 30%, #080006 100%), var(--bg1);
-    color:var(--text);
-    min-height:100vh;
+    background:
+      radial-gradient(700px 400px at 10% 10%, #2b003f 0%, var(--bg2) 30%, #050007 100%),
+      var(--bg1);
+    color:#fff;min-height:100vh;
     -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
   }
 
-  /* HEADER */
+  /* Header */
   header{
     position:fixed;left:0;right:0;top:0;
     display:flex;align-items:center;justify-content:space-between;
-    padding:14px 20px;
-    background:var(--glass);
-    backdrop-filter:blur(12px);
-    border-bottom:1px solid rgba(255,255,255,0.08);
+    padding:14px 20px;background:var(--glass);
+    backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.06);
     z-index:1200;
   }
-  .brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--text);text-decoration:none}
-  .dot{width:12px;height:12px;border-radius:50%;background:linear-gradient(90deg,var(--accent1),var(--accent2));box-shadow:0 0 12px rgba(159,81,255,0.35)}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;color:#fff;text-decoration:none}
+  .dot{width:12px;height:12px;border-radius:50%;background:linear-gradient(90deg,var(--pink),var(--purple));box-shadow:0 0 12px rgba(159,81,255,0.28)}
 
-  /* MENU ICON */
+  /* Menu button */
   .menu-btn{width:36px;height:26px;position:relative;cursor:pointer;display:flex;align-items:center;justify-content:center}
   .menu-btn span{position:absolute;left:6px;right:6px;height:3px;background:#fff;border-radius:3px;transition:all .28s}
   .menu-btn span:nth-child(1){top:6px}
@@ -49,168 +46,99 @@
   .menu-btn.open span:nth-child(2){opacity:0}
   .menu-btn.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
 
-  /* NAV PANEL (slides from right) */
+  /* overlay */
+  .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(6px);opacity:0;visibility:hidden;transition:opacity .28s;z-index:1100}
+  .overlay.show{opacity:1;visibility:visible}
+
+  /* Nav panel (glass slide from right) */
   .nav-panel{
-    position:fixed;top:0;right:0;height:100vh;width:280px;
-    transform:translateX(110%); /* hidden */
-    background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
-    border-left:1px solid rgba(255,255,255,0.06);
-    backdrop-filter:blur(18px);
-    box-shadow: -20px 0 60px rgba(120,20,120,0.18);
-    padding:84px 18px 20px;
-    transition:transform .36s cubic-bezier(.2,.9,.2,1),opacity .36s;
-    z-index:1100;
+    position:fixed;top:0;right:0;height:100vh;width:300px;
+    transform:translateX(110%);background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+    border-left:1px solid rgba(255,255,255,0.06);backdrop-filter:blur(18px);
+    box-shadow: -20px 0 60px rgba(120,20,120,0.16);padding:90px 20px 24px;transition:transform .36s cubic-bezier(.2,.9,.2,1);
+    z-index:1150;
   }
   .nav-panel.open{transform:translateX(0)}
   .nav-panel a{
-    display:block;padding:12px 14px;margin:8px 0;border-radius:12px;color:var(--text);
-    text-decoration:none;font-weight:600;transition:background .18s,transform .18s;
+    display:block;padding:12px 14px;margin:10px 0;border-radius:12px;color:#fff;text-decoration:none;font-weight:700;transition:background .18s, transform .18s;
   }
-  .nav-panel a:hover{background:linear-gradient(90deg, rgba(255,74,199,0.08), rgba(159,81,255,0.06));transform:translateX(-6px)}
+  .nav-panel a:hover{background:linear-gradient(90deg, rgba(255,74,199,0.06), rgba(159,81,255,0.06));transform:translateX(-6px)}
 
-  /* overlay when menu open */
-  .overlay{
-    position:fixed;inset:0;background:rgba(0,0,0,0.55);backdrop-filter:blur(6px);
-    opacity:0;visibility:hidden;transition:opacity .28s;z-index:1050;
-  }
-  .overlay.show{opacity:1;visibility:visible}
+  /* Main */
+  main{padding:110px 18px 80px;max-width:1120px;margin:0 auto}
+  h1{text-align:center;font-size:28px;margin-bottom:26px;color:#fff;text-shadow:0 0 18px rgba(159,81,255,0.06)}
 
-  /* Page main */
-  main{padding:110px 18px 80px;max-width:1100px;margin:0 auto}
-  h1{text-align:center;font-size:28px;margin-bottom:26px;color:linear-gradient(90deg,var(--accent1),var(--accent2));text-shadow:0 0 18px rgba(159,81,255,0.06)}
-  
-  /* Admin grid
-     Desktop: 3 columns
-     Tablet: 2 or auto-fit
-     Mobile: 2 columns and 7th centered
-  */
-  .admin-grid{
-    display:grid;
-    gap:22px;
-    grid-template-columns:repeat(3, 1fr);
-    align-items:start;
-  }
+  /* Admin grid */
+  .admin-grid{display:grid;gap:22px;grid-template-columns:repeat(3,1fr);align-items:start}
+  @media (max-width:1000px){ .admin-grid{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:600px){ .admin-grid{grid-template-columns:repeat(2,1fr)} }
 
-  /* smaller screens */
-  @media (max-width:1000px){
-    .admin-grid{grid-template-columns:repeat(2,1fr)}
-  }
-  @media (max-width:600px){
-    .admin-grid{grid-template-columns:repeat(2,1fr)}
-  }
-
-  /* center 7th on both desktop (3-col) and mobile (2-col) */
+  /* center 7th */
   @media (min-width:1001px){
-    .admin-grid .admin-card:nth-child(7){grid-column:2} /* center column when 3-col */
+    .admin-grid .admin-card:nth-child(7){grid-column:2}
   }
   @media (max-width:1000px){
-    .admin-grid .admin-card:nth-child(7){grid-column:1 / span 2; justify-self:center; max-width:320px}
+    .admin-grid .admin-card:nth-child(7){grid-column:1 / span 2; justify-self:center; max-width:360px}
   }
 
+  /* Card */
   .admin-card{
-    background: rgba(255,255,255,0.04);
-    border:1px solid rgba(255,255,255,0.06);
-    border-radius:14px;
-    padding:12px;
-    text-align:center;
-    transition:transform .22s, box-shadow .22s;
-    cursor:pointer;
-    box-shadow:0 6px 18px rgba(0,0,0,0.35);
-    position:relative;
-    overflow:visible;
+    background: rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.04);
+    border-radius:14px;padding:12px;text-align:center;transition:transform .22s, box-shadow .22s;cursor:pointer;
+    box-shadow:0 8px 20px rgba(0,0,0,0.4);position:relative;overflow:visible;
   }
-  .admin-card:hover{transform:translateY(-6px);box-shadow:0 14px 30px rgba(159,81,255,0.08)}
-  .admin-name{font-weight:600;margin-top:10px;font-size:14px;color:#fff}
+  .admin-card:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(159,81,255,0.09)}
+  .admin-name{font-weight:700;margin-top:10px;font-size:14px;color:#fff}
 
-  /* image wrapper with animated neon ring */
+  /* image wrapper + animated neon ring */
   .img-wrap{
     width:100%;height:140px;border-radius:12px;position:relative;overflow:visible;
     display:flex;align-items:center;justify-content:center;margin:0 auto;
   }
   .img-wrap img{
-    width:88%;height:86%;object-fit:cover;border-radius:10px;border:3px solid rgba(0,0,0,0.2);position:relative;z-index:5;
-    display:block;
+    width:88%;height:86%;object-fit:cover;border-radius:10px;border:3px solid rgba(0,0,0,0.2);position:relative;z-index:5;display:block;
   }
-
-  /* neon ring: pseudo element rotating / subtle blur */
   .img-wrap::before{
-    content:"";position:absolute;inset: -8px; /* slightly bigger than wrapper */
-    border-radius:18px;z-index:3;
-    background: conic-gradient(from 90deg, rgba(255,47,109,0.9), rgba(159,81,255,0.85), rgba(255,74,199,0.9), rgba(159,81,255,0.85));
-    filter:blur(10px);opacity:.25;transform:rotate(0deg);
-    transition:opacity .3s, transform .6s linear;
-    animation:spinSlow 6s linear infinite;
-    mix-blend-mode:screen;
-    pointer-events:none;
+    content:"";position:absolute;inset:-10px;border-radius:18px;z-index:3;
+    background:conic-gradient(from 0deg, rgba(255,47,109,0.95), rgba(159,81,255,0.9), rgba(255,74,199,0.95), rgba(159,81,255,0.9));
+    filter:blur(10px);opacity:.22;transform:rotate(0deg);animation:spinSlow 6s linear infinite;mix-blend-mode:screen;pointer-events:none;
   }
-  .admin-card:hover .img-wrap::before{opacity:0.55;filter:blur(14px);transform:scale(1.02)}
+  .img-wrap:hover::before{opacity:.55;filter:blur(14px)}
   @keyframes spinSlow{from{transform:rotate(0)}to{transform:rotate(360deg)}}
-
-  /* small ring highlight (thin) on top of everything */
   .img-wrap::after{
     content:"";position:absolute;inset:-4px;border-radius:14px;z-index:6;
-    background: radial-gradient(circle at 20% 20%, rgba(255,74,199,0.6), transparent 10%),
-                radial-gradient(circle at 80% 80%, rgba(159,81,255,0.5), transparent 12%);
-    mix-blend-mode:screen;opacity:.9;pointer-events:none;
+    background: radial-gradient(circle at 20% 20%, rgba(255,74,199,0.6), transparent 12%), radial-gradient(circle at 80% 80%, rgba(159,81,255,0.45), transparent 14%);
+    mix-blend-mode:screen;opacity:.95;pointer-events:none;
   }
 
-  /* Admin detail popup */
-  .modal{
-    position:fixed;inset:0;background:rgba(0,0,0,0.65);backdrop-filter:blur(6px);
-    display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .2s;
-    z-index:1300;
-  }
+  /* Modal (admin detail) */
+  .modal{position:fixed;inset:0;background:rgba(0,0,0,0.72);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .22s;z-index:1300}
   .modal.show{opacity:1;visibility:visible}
-  .modal-box{
-    width:92%;max-width:520px;background:rgba(255,255,255,0.05);
-    border-radius:16px;padding:22px;border:1px solid rgba(255,255,255,0.08);
-    backdrop-filter:blur(12px);box-shadow:0 20px 50px rgba(20,0,40,0.6);
-    animation:fadeScale .28s ease;
-    text-align:center;color:var(--text);
-  }
+  .modal-box{width:92%;max-width:520px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));border-radius:14px;padding:20px;border:1px solid rgba(255,255,255,0.06);backdrop-filter:blur(12px);box-shadow:0 30px 60px rgba(10,0,30,0.7);animation:fadeScale .28s ease;text-align:center}
   @keyframes fadeScale{from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
-  .modal-box img{width:120px;height:120px;border-radius:50%;object-fit:cover;border:4px solid rgba(255,255,255,0.04);box-shadow:0 6px 30px rgba(159,81,255,0.12)}
-  .modal-box h2{margin-top:12px;font-size:20px}
+  .modal-box img{width:120px;height:120px;border-radius:50%;object-fit:cover;border:4px solid rgba(255,255,255,0.04);box-shadow:0 10px 30px rgba(159,81,255,0.12)}
+  .modal-box h2{margin-top:10px;font-size:20px}
   .modal-box p{margin:8px 0;color:rgba(255,255,255,0.9);font-size:14px}
-  .modal-box .social a{display:block;margin:6px 0;padding:8px;border-radius:10px;text-decoration:none;color:#fff;background:linear-gradient(90deg,var(--accent2),var(--accent1));font-weight:600}
-  .btn-row{display:flex;gap:10px;margin-top:14px;justify-content:center}
-  .btn{padding:8px 14px;border-radius:10px;border:none;cursor:pointer;font-weight:600}
-  .btn.close{background:transparent;border:1px solid rgba(255,255,255,0.09);color:#fff}
-  .btn.primary{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#fff;box-shadow:0 6px 20px rgba(159,81,255,0.12)}
+  .modal-box .social a{display:block;margin:6px 0;padding:8px;border-radius:10px;text-decoration:none;color:#fff;background:linear-gradient(90deg,var(--purple),var(--pink));font-weight:700}
+  .modal-close{position:absolute;right:16px;top:12px;background:transparent;border:1px solid rgba(255,255,255,0.06);color:#fff;padding:6px 10px;border-radius:8px;cursor:pointer;font-weight:700}
 
-  /* small confirm for nav links (fade) */
-  .confirm{
-    position:fixed;left:50%;top:50%;transform:translate(-50%,-50%) scale(.95);
-    min-width:260px;max-width:420px;padding:16px;border-radius:12px;
-    background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);
-    box-shadow:0 12px 40px rgba(0,0,0,0.6);backdrop-filter:blur(10px);
-    opacity:0;visibility:hidden;transition:all .22s;z-index:1400;text-align:center;
-  }
-  .confirm.show{opacity:1;visibility:visible;transform:translate(-50%,-50%) scale(1)}
-  .confirm h4{margin-bottom:8px}
-  .confirm p{font-size:13px;color:rgba(255,255,255,0.9);margin-bottom:12px}
-  .confirm .row{display:flex;gap:10px;justify-content:center}
-  .confirm .row button{flex:1;padding:9px 12px;border-radius:10px;border:none;cursor:pointer;font-weight:700}
-  .confirm .open{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#fff}
-  .confirm .cancel{background:transparent;border:1px solid rgba(255,255,255,0.08);color:#fff}
+  .btn-row{display:flex;gap:10px;margin-top:12px;justify-content:center}
+  .btn{padding:8px 14px;border-radius:10px;border:none;cursor:pointer;font-weight:700}
+  .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,0.06);color:#fff}
+  .btn.primary{background:linear-gradient(90deg,var(--pink),var(--purple));color:#fff;box-shadow:0 10px 30px rgba(159,81,255,0.12)}
 
-  /* footer offset space */
-  footer{padding:30px 12px;text-align:center;color:rgba(255,255,255,0.75);font-size:13px}
+  footer{padding:26px 12px;text-align:center;color:rgba(255,255,255,0.65);font-size:13px;margin-top:20px}
 </style>
 </head>
 <body>
 
   <header>
     <a class="brand" href="https://www.freebots.store" target="_blank"><span class="dot"></span>MONEY HEIST OFC ADMINS</a>
-    <div class="menu-btn" id="menuBtn" aria-label="menu" title="menu">
-      <span></span><span></span><span></span>
-    </div>
+    <div class="menu-btn" id="menuBtn" aria-label="menu" title="menu"><span></span><span></span><span></span></div>
   </header>
 
-  <!-- overlay when nav open -->
   <div class="overlay" id="overlay"></div>
 
-  <!-- sliding nav panel -->
   <aside class="nav-panel" id="navPanel" aria-hidden="true">
     <a href="#" data-href="https://www.freebots.store/r/NIPUNO6D43">🔐 Loging</a>
     <a href="#" data-href="https://www.freebots.store">🏠 Home</a>
@@ -227,6 +155,144 @@
     <h1>💎 OFFICIAL ADMIN PANEL 💎</h1>
 
     <section class="admin-grid" id="adminGrid">
+      <article class="admin-card" data-admin="nipun">
+        <div class="img-wrap"><img src="https://i.ibb.co/9n3VxK9/sample1.jpg" alt="MR NIPUN"></div>
+        <div class="admin-name">MR NIPUN OFC</div>
+      </article>
+
+      <article class="admin-card" data-admin="dila">
+        <div class="img-wrap"><img src="https://i.ibb.co/3FvJY8H/sample2.jpg" alt="MR DILA"></div>
+        <div class="admin-name">MR DILA OFC</div>
+      </article>
+
+      <article class="admin-card" data-admin="qusay">
+        <div class="img-wrap"><img src="https://i.ibb.co/VvYhbZp/sample3.jpg" alt="MR QUSAY"></div>
+        <div class="admin-name">MR QUSAY OFC</div>
+      </article>
+
+      <article class="admin-card" data-admin="sachiya">
+        <div class="img-wrap"><img src="https://i.ibb.co/6JcZkJk/sample4.jpg" alt="MR SACHIYA"></div>
+        <div class="admin-name">MR SACHIYA</div>
+      </article>
+
+      <article class="admin-card" data-admin="akeel">
+        <div class="img-wrap"><img src="https://i.ibb.co/9YvZfXK/sample5.jpg" alt="MR AKEEL"></div>
+        <div class="admin-name">MR AKEEL OFC</div>
+      </article>
+
+      <article class="admin-card" data-admin="heshan">
+        <div class="img-wrap"><img src="https://i.ibb.co/4PFGhFH/sample6.jpg" alt="MR HESHAN"></div>
+        <div class="admin-name">MR HESHAN OFC</div>
+      </article>
+
+      <article class="admin-card" data-admin="rukshan">
+        <div class="img-wrap"><img src="https://i.ibb.co/XLtT7S4/sample7.jpg" alt="MR RUKSHAN"></div>
+        <div class="admin-name">MR RUKSHAN OFC</div>
+      </article>
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="m-name">
+      <button class="modal-close" id="modalClose" aria-label="Close">✖</button>
+      <img id="m-img" src="" alt="">
+      <h2 id="m-name"></h2>
+      <div id="m-info"></div>
+      <div class="btn-row">
+        <button class="btn secondary" id="modalClose2">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>© 2025 MONEY HEIST OFC — Admin Network</footer>
+
+<script>
+  // Elements
+  const menuBtn = document.getElementById('menuBtn');
+  const navPanel = document.getElementById('navPanel');
+  const overlay = document.getElementById('overlay');
+  const modal = document.getElementById('modal');
+  const modalClose = document.getElementById('modalClose');
+  const modalClose2 = document.getElementById('modalClose2');
+  const mImg = document.getElementById('m-img');
+  const mName = document.getElementById('m-name');
+  const mInfo = document.getElementById('m-info');
+
+  // Admin data
+  const adminData = {
+    nipun:{
+      img:"https://i.ibb.co/9n3VxK9/sample1.jpg",
+      name:"MR NIPUN OFC",
+      info:`<p>CONTACT : <a href="https://wa.me/+94757255903" target="_blank" rel="noopener">+94 757255903</a></p>
+            <p>AGE : 18</p><p>FROM : Sri Lanka</p>
+            <br><h3>🌐 SOCIAL MEDIA LINKS</h3>
+            <a href="https://whatsapp.com/channel/0029Vb9bLMqGJP8GmAHxUd02/3683" target="_blank" rel="noopener">Whatsapp Channel</a>
+            <a href="https://www.facebook.com/share/1KKrZV2NM8/" target="_blank" rel="noopener">Facebook Account</a>
+            <a href="https://www.facebook.com/share/17cgrxBQix/" target="_blank" rel="noopener">Facebook Page</a>
+            <a href="https://vm.tiktok.com/ZSHc9tLctfuKo-3zM0Z/" target="_blank" rel="noopener">TikTok</a>
+            <a href="https://youtube.com/@mrprofesormht?si=aT8XOonaZEj1YBdo" target="_blank" rel="noopener">YouTube Channel</a>
+            <a href="https://www.instagram.com/mr_nipun_ofc/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://t.me/Profesor9999" target="_blank" rel="noopener">Telegram</a>`
+    },
+    dila:{img:"https://i.ibb.co/3FvJY8H/sample2.jpg",name:"MR DILA OFC",info:`<p>Coming Soon...</p>`},
+    qusay:{img:"https://i.ibb.co/VvYhbZp/sample3.jpg",name:"MR QUSAY OFC",info:`<p>Coming Soon...</p>`},
+    sachiya:{img:"https://i.ibb.co/6JcZkJk/sample4.jpg",name:"MR SACHIYA",info:`<p>Coming Soon...</p>`},
+    akeel:{img:"https://i.ibb.co/9YvZfXK/sample5.jpg",name:"MR AKEEL OFC",info:`<p>Coming Soon...</p>`},
+    heshan:{img:"https://i.ibb.co/4PFGhFH/sample6.jpg",name:"MR HESHAN OFC",info:`<p>Coming Soon...</p>`},
+    rukshan:{img:"https://i.ibb.co/XLtT7S4/sample7.jpg",name:"MR RUKSHAN OFC",info:`<p>Coming Soon...</p>`}
+  };
+
+  // Toggle nav
+  menuBtn.addEventListener('click', ()=>{
+    menuBtn.classList.toggle('open');
+    navPanel.classList.toggle('open');
+    overlay.classList.toggle('show');
+  });
+  overlay.addEventListener('click', ()=> {
+    menuBtn.classList.remove('open');
+    navPanel.classList.remove('open');
+    overlay.classList.remove('show');
+  });
+
+  // Nav links open same tab
+  navPanel.querySelectorAll('a[data-href]').forEach(a=>{
+    a.addEventListener('click', (e)=>{
+      e.preventDefault();
+      const url = a.getAttribute('data-href');
+      // close menu with animation
+      menuBtn.classList.remove('open');
+      navPanel.classList.remove('open');
+      overlay.classList.remove('show');
+      // small delay so slide closes smoothly
+      setTimeout(()=> { window.location.href = url; }, 220);
+    });
+  });
+
+  // Admin cards -> modal
+  document.querySelectorAll('.admin-card').forEach(card=>{
+    card.addEventListener('click', ()=>{
+      const id = card.getAttribute('data-admin');
+      const data = adminData[id];
+      if(!data) return;
+      mImg.src = data.img;
+      mName.textContent = data.name;
+      mInfo.innerHTML = data.info;
+      modal.classList.add('show');
+      // focus close button for UX
+      setTimeout(()=> modalClose.focus(), 220);
+    });
+  });
+
+  // Close modal
+  modalClose.addEventListener('click', ()=> modal.classList.remove('show'));
+  modalClose2.addEventListener('click', ()=> modal.classList.remove('show'));
+  modal.addEventListener('click', (e)=> { if(e.target === modal) modal.classList.remove('show'); });
+  document.addEventListener('keydown', (e)=> { if(e.key === 'Escape'){ modal.classList.remove('show'); menuBtn.classList.remove('open'); navPanel.classList.remove('open'); overlay.classList.remove('show'); }});
+</script>
+
+</body>
+</html>">
       <article class="admin-card" data-admin="nipun">
         <div class="img-wrap"><img src="https://i.ibb.co/9n3VxK9/sample1.jpg" alt="MR NIPUN"></div>
         <div class="admin-name">MR NIPUN OFC</div>
