@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MONEY HEIST OFC ADMINS 🕶️</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    font-family:'Poppins',sans-serif;
+    background: radial-gradient(circle at top,#6c0078,#1a001f 80%);
+    color:#fff;
+    min-height:100vh;
+    overflow-x:hidden;
+  }
+
+  header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 22px;
+    background:rgba(255,255,255,0.06);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(255,255,255,0.1);
+    font-weight:600;
+    position:relative;
+    z-index:10;
+  }
+  header a{
+    color:#fff;
+    text-decoration:none;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .dot{
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:#a65cff;
+    box-shadow:0 0 8px #a65cff;
+  }
+
+  main{
+    padding:30px 20px 60px;
+    text-align:center;
+  }
+  h1{
+    font-size:26px;
+    font-weight:700;
+    margin-bottom:30px;
+    text-shadow:0 0 12px rgba(255,0,200,0.5);
+  }
+
+  .admin-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:25px;
+    justify-items:center;
+  }
+
+  .admin-card{
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.1);
+    backdrop-filter:blur(10px);
+    border-radius:20px;
+    box-shadow:0 0 25px rgba(255,0,170,0.25);
+    width:180px;
+    padding:15px;
+    transition:all .3s ease;
+    cursor:pointer;
+  }
+  .admin-card:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 35px rgba(255,0,200,0.4);
+  }
+  .admin-card img{
+    width:100%;
+    height:160px;
+    border-radius:15px;
+    object-fit:cover;
+    margin-bottom:10px;
+  }
+  .admin-card h3{
+    font-size:15px;
+    font-weight:600;
+  }
+
+  /* Popup */
+  .popup{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.55);
+    backdrop-filter:blur(5px);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    opacity:0;
+    visibility:hidden;
+    transition:all .3s ease;
+    z-index:50;
+  }
+  .popup.active{
+    opacity:1;
+    visibility:visible;
+  }
+  .popup-content{
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.15);
+    backdrop-filter:blur(15px);
+    border-radius:20px;
+    box-shadow:0 0 35px rgba(255,0,200,0.4);
+    padding:25px;
+    max-width:420px;
+    text-align:center;
+    animation:popupShow .4s ease;
+  }
+  @keyframes popupShow{
+    from{transform:scale(0.7);opacity:0;}
+    to{transform:scale(1);opacity:1;}
+  }
+  .popup-content img{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    object-fit:cover;
+    box-shadow:0 0 15px rgba(255,0,200,0.4);
+  }
+  .popup-content h2{
+    margin-top:10px;
+    font-size:20px;
+    font-weight:700;
+  }
+  .popup-content p{
+    margin:6px 0;
+    font-size:14px;
+  }
+  .popup-content a{
+    color:#b084ff;
+    text-decoration:none;
+    display:block;
+    margin:4px 0;
+  }
+  .close-popup{
+    margin-top:15px;
+    padding:8px 16px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(90deg,#ff48c4,#9f51ff);
+    color:#fff;
+    font-weight:600;
+    cursor:pointer;
+    box-shadow:0 0 15px rgba(255,0,200,0.3);
+  }
+
+  footer{
+    text-align:center;
+    font-size:13px;
+    opacity:0.8;
+    margin-top:40px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="https://www.freebots.store">
+    <div class="dot"></div> MONEY HEIST OFC ADMINS
+  </a>
+</header>
+
+<main>
+  <h1>💎 OFFICIAL ADMIN PANEL 💎</h1>
+
+  <div class="admin-grid">
+    <div class="admin-card" data-admin="nipun">
+      <img src="https://i.ibb.co/9n3VxK9/sample1.jpg" alt="MR NIPUN OFC">
+      <h3>MR NIPUN OFC</h3>
+    </div>
+
+    <div class="admin-card" data-admin="dila">
+      <img src="https://i.ibb.co/3FvJY8H/sample2.jpg" alt="MR DILA OFC">
+      <h3>MR DILA OFC</h3>
+    </div>
+
+    <div class="admin-card" data-admin="qusay">
+      <img src="https://i.ibb.co/VvYhbZp/sample3.jpg" alt="MR QUSAY OFC">
+      <h3>MR QUSAY OFC</h3>
+    </div>
+
+    <div class="admin-card" data-admin="sachiya">
+      <img src="https://i.ibb.co/6JcZkJk/sample4.jpg" alt="MR SACHIYA">
+      <h3>MR SACHIYA</h3>
+    </div>
+
+    <div class="admin-card" data-admin="akeel">
+      <img src="https://i.ibb.co/9YvZfXK/sample5.jpg" alt="MR AKEEL OFC">
+      <h3>MR AKEEL OFC</h3>
+    </div>
+
+    <div class="admin-card" data-admin="heshan">
+      <img src="https://i.ibb.co/4PFGhFH/sample6.jpg" alt="MR HESHAN OFC">
+      <h3>MR HESHAN OFC</h3>
+    </div>
+
+    <div class="admin-card" data-admin="rukshan">
+      <img src="https://i.ibb.co/XLtT7S4/sample7.jpg" alt="MR RUKSHAN OFC">
+      <h3>MR RUKSHAN OFC</h3>
+    </div>
+  </div>
+</main>
+
+<!-- Popup -->
+<div class="popup" id="popup">
+  <div class="popup-content" id="popupContent">
+    <!-- dynamic content -->
+  </div>
+</div>
+
+<footer>
+  © 2025 MONEY HEIST OFC — Admin Network
+</footer>
+
+<script>
+const popup = document.getElementById('popup');
+const popupContent = document.getElementById('popupContent');
+
+const adminData = {
+  nipun:{
+    img:"https://i.ibb.co/9n3VxK9/sample1.jpg",
+    name:"MR NIPUN OFC",
+    info:`
+      <p>CONTACT : <a href="https://wa.me/+94757255903" target="_blank">+94 757255903</a></p>
+      <p>AGE : 18</p>
+      <p>FROM : Sri Lanka</p>
+      <br>
+      <h3>🌐 SOCIAL MEDIA LINKS</h3>
+      <a href="https://whatsapp.com/channel/0029Vb9bLMqGJP8GmAHxUd02/3683" target="_blank">Whatsapp Channel</a>
+      <a href="https://www.facebook.com/share/1KKrZV2NM8/" target="_blank">Facebook Account</a>
+      <a href="https://www.facebook.com/share/17cgrxBQix/" target="_blank">Facebook Page</a>
+      <a href="https://vm.tiktok.com/ZSHc9tLctfuKo-3zM0Z/" target="_blank">TikTok</a>
+      <a href="https://youtube.com/@mrprofesormht?si=aT8XOonaZEj1YBdo" target="_blank">YouTube Channel</a>
+      <a href="https://www.instagram.com/mr_nipun_ofc/?utm_source=ig_web_button_share_sheet" target="_blank">Instagram</a>
+      <a href="https://t.me/Profesor9999" target="_blank">Telegram</a>
+    `
+  },
+  dila:{img:"https://i.ibb.co/3FvJY8H/sample2.jpg",name:"MR DILA OFC",info:`<p>Coming Soon...</p>`},
+  qusay:{img:"https://i.ibb.co/VvYhbZp/sample3.jpg",name:"MR QUSAY OFC",info:`<p>Coming Soon...</p>`},
+  sachiya:{img:"https://i.ibb.co/6JcZkJk/sample4.jpg",name:"MR SACHIYA",info:`<p>Coming Soon...</p>`},
+  akeel:{img:"https://i.ibb.co/9YvZfXK/sample5.jpg",name:"MR AKEEL OFC",info:`<p>Coming Soon...</p>`},
+  heshan:{img:"https://i.ibb.co/4PFGhFH/sample6.jpg",name:"MR HESHAN OFC",info:`<p>Coming Soon...</p>`},
+  rukshan:{img:"https://i.ibb.co/XLtT7S4/sample7.jpg",name:"MR RUKSHAN OFC",info:`<p>Coming Soon...</p>`}
+};
+
+document.querySelectorAll('.admin-card').forEach(card=>{
+  card.addEventListener('click',()=>{
+    const id = card.getAttribute('data-admin');
+    const data = adminData[id];
+    popupContent.innerHTML = `
+      <img src="${data.img}">
+      <h2>${data.name}</h2>
+      ${data.info}
+      <button class="close-popup" onclick="closePopup()">Close</button>
+    `;
+    popup.classList.add('active');
+  });
+});
+
+function closePopup(){
+  popup.classList.remove('active');
+}
+popup.addEventListener('click',e=>{
+  if(e.target===popup) closePopup();
+});
+</script>
+
+</body>
+</html>
