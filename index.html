@@ -44,7 +44,18 @@
     box-shadow:0 0 14px rgba(139,68,255,0.16);
   }
 
- /* Sidebar */
+  /* Animate menu (X icon) */
+  .menu.active div:nth-child(1){
+    transform:rotate(45deg) translate(5px,5px);
+  }
+  .menu.active div:nth-child(2){
+    opacity:0;
+  }
+  .menu.active div:nth-child(3){
+    transform:rotate(-45deg) translate(6px,-6px);
+  }
+
+  /* Sidebar */
   .sidebar{
     position:fixed;
     top:0;
@@ -429,4 +440,4 @@
   }, true);
 </script>
 </body>
-          </html>
+</html>
